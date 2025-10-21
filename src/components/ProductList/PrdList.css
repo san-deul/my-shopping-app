@@ -1,0 +1,176 @@
+
+
+
+
+
+/*리스트페이지랑 연결*/
+.section .main_more{position:absolute;top:0;right:0;width: 40px;height: 40px;background:var(--main-color);}
+.section .main_more a{display:block;width: 100%;height: 100%;}
+.section .main_more a img{  position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);}
+
+.section_lists{width: 100%;max-width:1280px;margin:80px auto 0;display:flex;flex-wrap:wrap;gap:2%;position:relative;}
+
+
+.section_lists .list{width: 23.5%;margin-bottom:74px;position:relative;background:#fff;}
+
+
+.item_img{position:relative;overflow:hidden;border:1px solid #eee; height: 0;               /* 높이를 0으로 설정 */
+    padding-bottom: 100%;}
+.item_img>a img{position: absolute;      /* 이미지를 절대 위치로 설정하여 부모 요소의 padding-bottom에 영향을 받지 않도록 합니다. */
+    top: 0;
+    left: 0;width: 100%;height: 100%; object-fit: cover;   }
+
+.item_img .i_state{width: 120px;height:32px;background:#363636;position:absolute;top:5%;left:5%;border-radius:3px;}
+.item_img .i_state a{display:block;font-size:16px;font-weight:700;color:#fff;text-align:center;line-height:32px;}
+
+
+.item_img .bar{width: 100%;height: 55px;background:rgba(0,0,0,0.8);position:absolute;bottom:-55px;left:0;transition:all 0.6s;display:flex;justify-content:center;align-items:Center;}
+
+.item_img .bar .icon{width: 20%;height: 100%;}
+.item_img .bar .icon img{width: 100%;height: 100%;vertical-align:middle;}
+/* .category_in li .item_img .bar p img{width: 100%;} */
+
+.item_img .bar p .on{display:none;}
+
+.section_lists  li:hover .bar{bottom:0px;}
+
+.section_lists  li .item_img .bar .like:hover .off{display:none;}
+.section_lists  li .item_img .bar .like:hover .on{display:block;}
+
+
+
+.item_txt{padding:10px 5px;text-align:center;margin-left:2px;}
+.item_txt .i_title{  
+  font-size: 16px;
+  font-weight: 500;
+  color: #181818;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: keep-all;
+}
+
+.item_txt .i_title a{
+  display: block;
+  padding: 20px 0 10px;
+  font-size: 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.i_price{display:flex;justify-content:center;align-items: flex-end;}
+
+.i_price .i_price1{font-size:18px;font-weight:500;color:#b4b4b4;  text-decoration: line-through;}
+.i_price .i_price2{margin-left:16px;}
+.i_price .i_price2 span{font-size:20px;color:#1e1e1e;font-weight:700;}
+
+
+/* 스와이퍼 커스텀 */
+.swiper-wrap {position: relative;width: 96%;margin:0 auto;
+  padding-bottom: 150px ;}
+.mySwiper{margin:80px auto 0;}
+
+.custom-area{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index:500;
+  width:100%;
+  height: 25px;
+  
+ 
+}
+
+.custom-pagination {
+  position: absolute;
+  width: 80% !important;
+  background: #eee;
+  border-radius: 15px;
+  overflow: hidden;
+
+}
+
+.custom-pagination .swiper-pagination-progressbar-fill {
+  display:block;
+  background: orange;
+  border-radius: var(--swiper-scrollbar-border-radius, 10px);
+  height: 100%;
+  transition: width 0.3s;
+}
+.custom-button{
+  position: absolute;
+  bottom:0;
+  right:0;
+  width:20%;
+  display: flex;
+  justify-content: space-evenly
+
+}
+.custom-next, .custom-prev {
+  cursor: pointer;
+}
+.custom-next, .custom-prev {
+    &.swiper-button-disabled {
+        cursor: auto;
+        opacity: .35;
+        pointer-events: none;
+    }
+}
+
+
+/* 예시 CSS: pagination 스타일 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    gap: 5px;
+}
+
+.pagination button {
+    padding: 8px 12px;
+    margin: 0 4px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.pagination button.active {
+    background-color: #f1f1f1;
+    font-weight: bold;
+    border-color: var(main-color);
+}
+
+.pagination button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+
+
+
+/* =====================
+   Tablet  
+========================*/
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  .section_lists .list{width: 47.5%;margin-bottom:74px;position:relative;background:#fff;}
+  .section_lists{
+  justify-content: space-between;}
+
+}
+
+
+/* =====================
+   Mobile  
+========================*/
+@media (max-width: 767px) {
+  
+  .section_lists .list{width: 47.5%;margin-bottom:74px;position:relative;background:#fff;}
+  .section_lists{
+  justify-content: space-between;}
+
+}

@@ -1,0 +1,545 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "리베보 오트밀 애플앤시나몬 89g x 14입ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ",
+      "brand": "리베보",
+      "category": 1010,
+      "subCategory": "1010",
+      "price": 49000,
+      "originalPrice": 119000,
+      "discount": 59,
+      "image": "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?w=400&q=80",
+      "description": "식사 대용 및 바디 밸런스 케어를 위한 오트밀",
+      "isNew": false,
+      "isBest": true,
+      "rating": 4.7,
+      "reviewCount": 980,
+      "stock": 120
+    },
+    {
+      "id": 2,
+      "name": "리베보 오트밀 오리지널 91g x 14입",
+      "brand": "리베보",
+      "category": 1020,
+      "subCategory": "1010",
+      "price": 49000,
+      "originalPrice": 119000,
+      "discount": 59,
+      "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&q=80",
+      "description": "고소하고 담백한 오리지널 오트밀, 건강한 식단 관리",
+      "isNew": false,
+      "isBest": true,
+      "rating": 4.8,
+      "reviewCount": 1120,
+      "stock": 150
+    },
+    {
+      "id": 3,
+      "name": "닥터셀랑 포텐 쿨링 워시 200ml + 30ml",
+      "brand": "닥터셀랑",
+      "category": 1030,
+      "subCategory": "101100",
+      "price": 13900,
+      "originalPrice": 13900,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=80",
+      "description": "청량감을 주는 쿨링 바디/풋 클렌저",
+      "isNew": true,
+      "isBest": false,
+      "rating": 4.5,
+      "reviewCount": 210,
+      "stock": 70
+    },
+    {
+      "id": 4,
+      "name": "셀레앙 퓨어 인티메이트 에센스 2ml x 8입",
+      "brand": "셀레앙",
+      "category": 1010,
+      "subCategory": "1010",
+      "price": 360000,
+      "originalPrice": 360000,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400&q=80",
+      "description": "민감한 Y존을 위한 고농축 스킨/토너 에센스",
+      "isNew": true,
+      "isBest": true,
+      "rating": 4.9,
+      "reviewCount": 550,
+      "stock": 90
+    },
+    {
+      "id": 5,
+      "name": "하이드레이팅 세럼",
+      "brand": "글로우랩",
+      "category": 1030,
+      "subCategory": "1010",
+      "price": 32000,
+      "originalPrice": 45000,
+      "discount": 29,
+      "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&q=80",
+      "description": "건조한 피부에 깊은 수분을 공급하는 고보습 세럼 (스킨/토너 단계 사용)",
+      "isNew": true,
+      "isBest": true,
+      "rating": 4.8,
+      "reviewCount": 342,
+      "stock": 150
+    },
+    {
+      "id": 6,
+      "name": "베벳 매트 립스틱 #03",
+      "brand": "뷰티코드",
+      "category": 1030,
+      "subCategory": "1020",
+      "price": 18500,
+      "originalPrice": 18500,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=400&q=80",
+      "description": "부드러운 발림과 오래가는 지속력의 매트 립스틱",
+      "isNew": true,
+      "isBest": false,
+      "rating": 4.6,
+      "reviewCount": 156,
+      "stock": 89
+    },
+    {
+      "id": 7,
+      "name": "워터풀 수딩 로션 200ml",
+      "brand": "글로우랩",
+      "category": 1030,
+      "subCategory": "1020",
+      "price": 25500,
+      "originalPrice": 34000,
+      "discount": 25,
+      "image": "https://images.unsplash.com/photo-1594311431552-1cde4f4d1891?w=400&q=80",
+      "description": "가볍고 산뜻하게 흡수되는 수분 로션",
+      "isNew": false,
+      "isBest": true,
+      "rating": 4.7,
+      "reviewCount": 450,
+      "stock": 200
+    },
+    {
+      "id": 8,
+      "name": "울트라 리페어 크림 50ml",
+      "brand": "뷰티코드",
+      "category": 1030,
+      "subCategory": "1030",
+      "price": 48000,
+      "originalPrice": 60000,
+      "discount": 20,
+      "image": "https://images.unsplash.com/photo-1620917669809-1af0497965de?w=400&q=80",
+      "description": "손상된 피부 장벽을 집중적으로 개선하는 고농축 크림",
+      "isNew": true,
+      "isBest": false,
+      "rating": 4.6,
+      "reviewCount": 350,
+      "stock": 50
+    },
+    {
+      "id": 9,
+      "name": "데일리 수분 선 베이스 SPF50+",
+      "brand": "닥터포이",
+      "category": "20",
+      "subCategory": 1030,
+      "price": 28000,
+      "originalPrice": 35000,
+      "discount": 20,
+      "image": "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=400&q=80",
+      "description": "자외선 차단과 톤 보정 기능을 겸비한 베이스",
+      "isNew": false,
+      "isBest": true,
+      "rating": 4.7,
+      "reviewCount": 510,
+      "stock": 140
+    },
+    {
+      "id": 10,
+      "name": "오버나이트 리페어 앰플 30ml",
+      "brand": "셀레앙",
+      "category": 1010,
+      "subCategory": "1010",
+      "price": 55000,
+      "originalPrice": 79000,
+      "discount": 30,
+      "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80",
+      "description": "밤 사이 피부 활력을 되찾아주는 고기능성 앰플",
+      "isNew": false,
+      "isBest": true,
+      "rating": 4.9,
+      "reviewCount": 780,
+      "stock": 80
+    },
+    {
+      "id": 11,
+      "name": "실키 브라운 아이 섀도우 팔레트",
+      "brand": "글로우랩",
+      "category": 2020,
+      "subCategory": "2020",
+      "price": 39900,
+      "originalPrice": 45000,
+      "discount": 11,
+      "image": "https://images.unsplash.com/photo-1583241801142-113b9f5bbde5?w=400&q=80",
+      "description": "데일리부터 스모키까지 가능한 브라운 계열 섀도우",
+      "isNew": true,
+      "isBest": true,
+      "rating": 4.6,
+      "reviewCount": 280,
+      "stock": 110
+    },
+    {
+      "id": 12,
+      "name": "에센셜 너리싱 샴푸 500ml",
+      "brand": "뷰티코드",
+      "category": 3010,
+      "subCategory": "3010",
+      "price": 21500,
+      "originalPrice": 28000,
+      "discount": 23,
+      "image": "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=400&q=80",
+      "description": "두피와 모발에 영양을 공급하는 순한 샴푸",
+      "isNew": false,
+      "isBest": true,
+      "rating": 4.7,
+      "reviewCount": 620,
+      "stock": 160
+    },
+    {
+      "id": 13,
+      "name": "아르간 오일 리치 린스 500ml",
+      "brand": "닥터포이",
+      "category": 3020,
+      "subCategory": "3020",
+      "price": 23000,
+      "originalPrice": 30000,
+      "discount": 23,
+      "image": "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&q=80",
+      "description": "모발을 부드럽게 코팅하는 아르간 오일 함유 린스",
+      "isNew": true,
+      "isBest": false,
+      "rating": 4.5,
+      "reviewCount": 190,
+      "stock": 100
+    },
+    {
+      "id": 14,
+      "name": "실크 단백질 트리트먼트 250ml",
+      "brand": "셀레앙",
+      "category": 3030,
+      "price": 29900,
+      "originalPrice": 42000,
+      "discount": 29,
+      "image": "https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=400&q=80",
+      "description": "손상모 집중 관리를 위한 실크 단백질 트리트먼트",
+      "isNew": false,
+      "isBest": true,
+      "rating": 4.8,
+      "reviewCount": 450,
+      "stock": 70
+    },
+    {
+      "id": 15,
+      "name": "내추럴 퍼퓸 핸드크림 (3종 세트)",
+      "brand": "글로우랩",
+      "category": 4020,
+      "price": 19900,
+      "originalPrice": 28000,
+      "discount": 29,
+      "image": "https://images.unsplash.com/photo-1582020738577-2e7a48043902?w=400&q=80",
+      "description": "은은한 향과 보습력이 뛰어난 핸드케어 세트",
+      "isNew": false,
+      "isBest": true,
+      "rating": 4.7,
+      "reviewCount": 550,
+      "stock": 180
+    },
+    {
+      "id": 16,
+      "name": "쿨링 민트 풋 마스크 5매",
+      "brand": "뷰티코드",
+      "category": 4030,
+      "subCategory": "4030",
+      "price": 14500,
+      "originalPrice": 19000,
+      "discount": 24,
+      "image": "https://images.unsplash.com/photo-1751991713869-7e5ae07db1fb?w=400&q=80",
+      "description": "지친 발에 시원한 진정과 보습을 주는 마스크",
+      "isNew": true,
+      "isBest": false,
+      "rating": 4.5,
+      "reviewCount": 90,
+      "stock": 95
+    },
+    {
+      "id": 17,
+      "name": "비건 마일드 바디 로션 400ml",
+      "brand": "닥터포이",
+      "category": 4010,
+      "subCategory": "4010",
+      "price": 27000,
+      "originalPrice": 33000,
+      "discount": 18,
+      "image": "https://images.unsplash.com/photo-1682155858910-31e993ce29aa?w=400&q=80",
+      "description": "민감성 피부를 위한 순하고 촉촉한 비건 바디 로션",
+      "isNew": false,
+      "isBest": false,
+      "rating": 4.6,
+      "reviewCount": 310,
+      "stock": 130
+    },
+    {
+      "id": 18,
+      "name": "에어핏 틴트 글로우 #핑크",
+      "brand": "셀레앙",
+      "category": 1030,
+      "subCategory": "1030",
+      "price": 15000,
+      "originalPrice": 22000,
+      "discount": 32,
+      "image": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400&q=80",
+      "description": "가볍게 밀착되어 오래 지속되는 핑크 틴트 글로우",
+      "isNew": false,
+      "isBest": true,
+      "rating": 4.7,
+      "reviewCount": 710,
+      "stock": 60
+    },
+    {
+      "id": 19,
+      "name": "프리미엄 쿨 두피 샴푸 300ml",
+      "brand": "글로우랩",
+      "category": 1030,
+      "subCategory": "1030",
+      "price": 25000,
+      "originalPrice": 35000,
+      "discount": 29,
+      "image": "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=400&q=80",
+      "description": "두피 열감을 낮추고 청결하게 관리하는 쿨링 샴푸",
+      "isNew": true,
+      "isBest": true,
+      "rating": 4.8,
+      "reviewCount": 490,
+      "stock": 125
+    },
+    {
+      "id": 20,
+      "name": "퓨어 마일드 토너 500ml",
+      "brand": "뷰티코드",
+      "category": 1010,
+      "subCategory": "1010",
+      "price": 19900,
+      "originalPrice": 25000,
+      "discount": 20,
+      "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80",
+      "description": "피부결을 정돈하는 대용량 저자극 토너",
+      "isNew": false,
+      "isBest": false,
+      "rating": 4.6,
+      "reviewCount": 380,
+      "stock": 170
+    }
+  ],
+  "categories": [
+    {
+      "id": 10,
+      "name": "스킨케어",
+      "parentId": null
+    },
+    {
+      "id": 1010,
+      "name": "스킨/토너",
+      "parentId": 10
+    },
+    {
+      "id": 1020,
+      "name": "로션",
+      "parentId": 10
+    },
+    {
+      "id": 1030,
+      "name": "크림",
+      "parentId": 10
+    },
+    {
+      "id": 20,
+      "name": "메이크업",
+      "parentId": null
+    },
+    {
+      "id": 2010,
+      "name": "베이스",
+      "parentId": 20
+    },
+    {
+      "id": 2020,
+      "name": "아이",
+      "parentId": 20
+    },
+    {
+      "id": 2030,
+      "name": "립",
+      "parentId": 20
+    },
+    {
+      "id": 30,
+      "name": "헤어케어",
+      "parentId": null
+    },
+    {
+      "id": 3010,
+      "name": "샴푸",
+      "parentId": 30
+    },
+    {
+      "id": 3020,
+      "name": "린스",
+      "parentId": 30
+    },
+    {
+      "id": 3030,
+      "name": "트리트먼트",
+      "parentId": 30
+    },
+    {
+      "id": 40,
+      "name": "바디케어",
+      "parentId": null
+    },
+    {
+      "id": 4010,
+      "name": "로션",
+      "parentId": 40
+    },
+    {
+      "id": 4020,
+      "name": "핸드케어",
+      "parentId": 40
+    },
+    {
+      "id": 4030,
+      "name": "풋케어",
+      "parentId": 40
+    }
+  ],
+  "member": [
+    {
+      "id": "user1234",
+      "password": "hashed_password_1",
+      "name": "홍길동",
+      "email": "minji.kim@example.com",
+      "phone": "010-1234-5678",
+      "address": {
+        "zipcode": "06236",
+        "basic_address": "서울특별시 강남구 테헤란로 123",
+        "detail_address": "5층 501호",
+        "extra_info": "(역삼동)"
+      }
+    },
+    {
+      "id": "a111",
+      "password": "hashed_password_2",
+      "name": "김회원",
+      "email": "junho.lee@react.dev",
+      "phone": "010-9876-5432",
+      "address": {
+        "zipcode": "13501",
+        "basic_address": "경기도 성남시 분당구 판교역로 235",
+        "detail_address": "A동 101호",
+        "extra_info": "(삼평동)"
+      }
+    },
+    {
+      "id": "user123",
+      "password": "123456",
+      "name": "ㅇㅇㅇ",
+      "email": "sd@example.com",
+      "phone": "134646",
+      "address": {
+        "zipcode": "",
+        "basic_address": "",
+        "detail_address": "",
+        "extra_info": ""
+      }
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "productId": 2,
+      "userId": "user1234",
+      "rating": 5.0,
+      "title":"좋아요~~",
+      "content": "오리지널 오트밀은 역시 고소하고 담백해서 질리지 않아요. 아침 식사 대용으로 최고입니다! 🥣 14개입이라 넉넉해서 좋아요.",
+      "date": "2025-09-28",
+      "img":"https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400&q=80"
+    },
+    {
+      "id": 2,
+      "productId": 18,
+      "userId": "a111",
+      "rating": 4.5,
+      "title":"감사합니다",
+      "content": "에어핏 틴트 글로우 핑크 색상 구매했어요. 가볍게 발리고 촉촉한 광택이 너무 예뻐요! 지속력도 좋아서 만족합니다.",
+      "date": "2025-10-01",
+      "img":"https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&q=80"
+    },
+    {
+      "id": 3,
+      "productId": 12,
+      "userId": "user1234",
+      "rating": 5.0,
+      "title":"후기입니다",
+      "content": "에센셜 너리싱 샴푸는 순하고 거품이 잘 나서 좋아요. 사용 후 두피가 편안하고 모발에 힘이 생긴 것 같아요. 온 가족이 사용 중입니다.",
+      "date": "2025-10-05",
+      "img":"https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=400&q=80"
+    },
+    {
+      "id": 4,
+      "productId": 4,
+      "userId": "a111",
+      "rating": 4.0,
+      "title":"잘 사용중입니다!",
+      "content": "퓨어 인티메이트 에센스, 고가라 망설였는데 사용 후 민감한 부위가 확실히 편안해졌어요. 꾸준히 사용해보려구요.",
+      "date": "2025-09-25",
+      "img":"https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400&q=80"
+    },
+    {
+      "id": 5,
+      "productId": 15,
+      "userId": "user123",
+      "rating": 4.5,
+      "title":"최고에요",
+      "content": "내추럴 퍼퓸 핸드크림 세트, 향이 은은하고 보습력이 좋네요. 휴대하기 좋은 사이즈라 가방에 항상 넣어 다녀요. 선물용으로도 좋을 것 같아요.🎁",
+      "date": "2025-10-08",
+      "img":"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&q=80"
+    },
+    {
+      "id": 6,
+      "productId": 19,
+      "userId": "a111",
+      "rating": 5.0,
+      "title":"정말좋아요!",
+      "content": "여름에 특히 필수템! 프리미엄 쿨 두피 샴푸는 두피의 열감을 즉시 내려줘서 시원하고 개운해요. 거품도 풍성하게 잘 납니다.",
+      "date": "2025-09-30",
+      "img": "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=400&q=80"
+    }
+  ],
+  "notices":[
+    {
+      "id": 1,
+      "userId": "admin",
+      "title":"홈페이지 오픈",
+      "content": "홈페이지를 오픈했습니다, 많은 관심부탁드립니다.",
+      "date": "2025-09-28",
+      "img":"https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=400&q=80"
+    },
+    {
+      "id": 2,
+      "userId": "admin",
+      "title":"연휴안내",
+      "content": "10/01 ~ 10/12일까지는 휴무입니다.감사합니다.",
+      "date": "2025-09-28",
+      "img":""
+    }
+  ]
+}

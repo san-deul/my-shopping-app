@@ -1,0 +1,49 @@
+:root {
+    --main-font: 'Pretendard', sans-serif; /* 폰트 변수 */
+    
+    --main-color:#ffaf8b;
+}
+*{
+    box-sizing: border-box; 
+}
+body {
+    font-family: var(--main-font);
+
+}
+
+
+.content-area {
+    width: 100%;
+    margin: 0 auto;
+
+}
+
+/* 메인페이지 */
+.main-content {
+    padding-top: 0; 
+}
+
+
+/* 서브페이지 */
+.subpage-content {
+    /* fixed Header의 높이(200px)만큼 padding-top을 추가합니다. */
+    padding-top: 80px;
+    padding-bottom:50px; 
+}
+
+
+.section{width: 100%;max-width : 1280px;height:auto;margin:115px auto 0;text-align: center;position: relative;}
+.section_in{width: 98%;margin:60px auto 0; position:Relative;text-align:center;}
+.title{display:inline-block;margin:0 auto;font-family:var(--mainfont);font-size:32px;font-weight:500;position:relative;line-height:1;} 
+
+.title::after{content:'';position:Absolute;bottom:-15px;left:50%;transform:translateX(-50%);width: 30%;height:2px;background:var(--main-color);}
+
+/* =====================
+   Tablet  
+========================*/
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  .section_in{width:96%}
+
+
+}

@@ -1,0 +1,62 @@
+*{--mainfont: 'Pretendard';}
+
+/* =====================
+   Footer
+========================*/
+
+.footer{width: 100%;height: auto;padding:50px 0px 60px;background:#fff;font-family:var(--mainfont);border-top:1px solid #b4b4b4;}
+.footer_in{width: 100%;max-width: 1280px;margin:0 auto;display:flex;justify-content:space-between;align-items: center;}
+.footer_in .f_left .f_logo a{display:inline-block;}
+
+.f_left{width: 50%;font-size:14px;display:flex;align-items: flex-end;}
+
+.f_left .f_num{margin-left:40px;}
+.f_left .f_num strong{font-size:30px;font-weight:700;}
+.f_left .f_num p{font-size:16px;font-weight:300;line-height:24px;margin-top:10px;}
+
+.f_right{width: 50%;font-size:16px;}
+.f_right .f_list{display:flex;justify-content:flex-start;width: 95%;margin:10px auto 0;}
+.f_right .f_list li{position:relative;}
+.f_right .f_list li::after{content:'';position:absolute;width: 1px;height: 100%;background:#191919;top:0;right:0}
+.f_right .f_list li:last-child::after{display:none;}
+
+.f_right .f_list li a{display:block;font-weight:600;padding:0 20px;}
+.f_right .f_list li:first-child a{text-align:left;padding-left:0px;}
+.f_right .f_list li a::after{}
+.f_right address{width: 95%;margin:24px auto 0;line-height:24px;font-weight:400;font-style:normal;}
+.f_right address .none2{display:none;}
+
+.footer .copy{font-size:14px;font-weight:500;text-align:center;margin-top:40px;}
+
+
+/* =====================
+   Tablet  
+========================*/
+@media (min-width: 768px) and (max-width: 1023px) {
+   .footer{padding: 20px 0;}
+   .footer_in {width:96%;margin:0 auto; flex-direction: column}
+   .f_left, .f_right{width:100%;}
+   .footer_in .f_left .f_logo{display:none;}
+   .f_left .f_num{margin-left:0}
+   .f_right{margin-top:24px;display: flex;flex-direction: column-reverse;}
+   .f_right address{margin:0 }
+   .f_right .f_list{margin:20px 0; }
+   .footer .copy {text-align: left;text-indent:20px;margin-top:20px}
+}
+
+/* =====================
+   Mobile  
+========================*/
+@media (max-width: 767px) {
+
+   .footer{padding: 20px 0;}
+   .footer_in {width:96%;margin:0 auto; flex-direction: column}
+   .f_left, .f_right{width:100%;}
+   .footer_in .f_left .f_logo{display:none;}
+   .f_left .f_num{margin-left:0}
+   .f_right{margin-top:24px;display: flex;flex-direction: column-reverse;}
+   .f_right address{margin:0 }
+   .f_right .f_list{display: none; }
+   .footer .copy {text-align: left;text-indent:20px;margin-top:20px}
+
+}

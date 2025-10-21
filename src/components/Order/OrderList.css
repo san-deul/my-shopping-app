@@ -1,0 +1,51 @@
+.orderlist-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 40px auto;
+}
+
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  border-top: 2px solid #333;
+}
+
+.order-table th,
+.order-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+.product-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.product-info img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border: 1px solid #eee;
+  border-radius: 6px;
+}
+
+.order-id {
+  font-size: 12px;
+  color: #666;
+}
+
+.order-detail-btn {
+  background: #fff;
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.order-detail-btn:hover {
+  background: #f7f7f7;
+}

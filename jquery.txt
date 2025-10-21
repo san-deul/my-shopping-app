@@ -1,0 +1,268 @@
+
+
+	var wiwi = 0
+	//PC 메뉴 영역!!!!!!!!!
+	
+	// PC 메뉴 내렸을 때 흰색으로 바뀜	
+	$(window).scroll(function(){ 
+        if($(this).scrollTop()>120){
+            $('.pc_header1').addClass("on");	
+
+        }else{
+			$('.pc_header1').removeClass("on");
+			//$('.pc_header1').removeClass("on2");
+
+        }
+		wiwi = $(window).scrollTop();
+	}); 
+
+	// PC 메뉴 올렸을때 흰색으로 바뀜	
+	$(".pc_header1").hover(function(){
+		
+		$('.pc_header1').addClass("on");
+
+		},function(){
+		if(wiwi>120){
+		
+		}else{
+			$('.pc_header1').removeClass("on");
+		}
+
+    });
+	
+	
+	//PC 메뉴 전체보기 클릭
+	var aa=true;
+	$('.pc_btn').click(function(){
+
+		$(this).toggleClass('on');
+
+		if(aa){
+
+			$('.pc_allmenu').show();
+			$('.pc_header1').addClass("on2");
+			aa=false;
+			
+		}else{
+
+			$('.pc_allmenu').hide();
+			$('.pc_header1').removeClass("on2");
+			
+
+			aa=true;
+		}
+
+	});
+	
+	//var bb=true;
+	$('.allmenu_close').click(function(){		
+		$('.pc_btn').click();
+	});
+
+
+	//PC 메뉴 호버
+	$(".pc_menu>li").hover(function(){
+        $(this).find(">ul").stop(true,true).show();
+    },function(){
+        $(this).find(">ul").stop(true,true).hide();
+    });
+
+
+//PC 유틸 마이페이지 호버
+	$(".pc_utilmy").hover(function(){
+        $(this).find(">ul").stop(true,true).show();
+    },function(){
+        $(this).find(">ul").stop(true,true).hide();
+    });
+
+
+
+
+
+
+	// 모바일메뉴 오픈
+
+	var bb=true;
+	$(".menu_btn").click(function(){
+
+		if(bb){
+
+			$('.menu_btn').addClass('on');
+			$('.m_open').stop(true,true).animate({"left":"0%"});
+			//$('.m_open_in').css({"overflow-y":"scroll"});
+			$('html').css({'overflow-y':'hidden'});
+
+			bb=false;
+		}else{
+			$('.menu_btn').removeClass('on');
+			$('.m_open').stop(true,true).animate({"left":"-100%"});
+			$('html').css({'overflow-y':'scroll'});
+			bb=true;
+		}
+
+    });
+
+
+	//mobile nav 서브
+//	var cc=true;
+//	$(".m_nav>li").click(function(){ 
+//		if(cc){
+//			$(this).find(".m_sub").stop(true,true).slideDown();
+//			cc=false;
+//		}else{
+//			$(this).find(".m_sub").stop(true,true).slideUp();
+//			cc=true;
+//			
+//		}
+//    });
+
+
+	$(".m_nav>li").click(function(){ 
+
+		$(this).toggleClass('ondra');
+		if($(this).hasClass('ondra')){
+
+			$(this).find(".m_sub").stop(true,true).slideDown();
+			$(this).find(".aimg img").attr({"src":"/images/menu_close.png"});
+            
+		}else{
+
+			$(this).find(".m_sub").stop(true,true).slideUp();
+			$(this).find(".aimg img").attr({"src":"/images/menu_open.png"});
+           
+		}
+       
+    });
+	
+
+
+
+
+
+
+	//메인 visual 슬라이드
+      var swiper = new Swiper(".mySwiper", {
+
+		  autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+		  loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          type: "fraction",
+					formatFractionCurrent: function (number) {
+				return ('0' + number).slice(-2);
+			},
+			formatFractionTotal: function (number) {
+				return ('0' + number).slice(-2);
+			},
+			renderFraction: function (currentClass, totalClass) {
+				return '<span class="' + currentClass + '"></span>' +
+					   ' / ' +
+					   '<span class="' + totalClass + '"></span>';
+			}
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+
+	//visual 슬라이드 모바일
+	var swiperm = new Swiper(".mySwiperm", {
+		spaceBetween: 0,
+		centeredSlides: true,
+		loop:true,
+		autoplay: {
+		  delay: 2500,
+		  disableOnInteraction: false,
+		},
+		pagination: {
+		  el: ".swiper-paginationm",
+		  clickable: true,
+		},
+	//		navigation: {
+	//		  nextEl: ".swiper-button-next1",
+	//		  prevEl: ".swiper-button-prev1",
+	//		},
+
+		touchEventsTarget: 'wrapper'
+	  });
+
+
+	//프로모션 스와이퍼
+	 var swiper2 = new Swiper(".mySwiper2", {
+		  slidesPerView: 2.8,
+		  spaceBetween: 40,
+		  slidesPerGroup: 1,
+//		  loop: true, loop는 slidebar를 지원X
+//		  loopFillGroupWithBlank: true,
+//		  pagination: {
+//			el: ".swiper-pagination",
+//			clickable: true,
+//		  },
+			scrollbar: {
+        el: ".swiper-scrollbar",
+      },
+		  navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev",
+		  },
+    });
+
+			//프로모션 스와이퍼 모바일
+	 var swiper2m = new Swiper(".mySwiper2m", {
+		  slidesPerView: 1,
+		  spaceBetween: 40,
+		  slidesPerGroup: 1,
+//		  loop: true, loop는 slidebar를 지원X
+//		  loopFillGroupWithBlank: true,
+//		  pagination: {
+//			el: ".swiper-pagination",
+//			clickable: true,
+//		  },
+			scrollbar: {
+        el: ".swiper-scrollbar",
+      },
+		  navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev",
+		  },
+    });
+
+
+	//리뷰 스와이퍼
+	 var swiper3 = new Swiper(".mySwiper3", {
+		  slidesPerView: 4,
+		  spaceBetween: 40,
+		  slidesPerGroup: 1,
+			scrollbar: {
+        el: ".swiper-scrollbar",
+      },
+		  navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev",
+		  },
+    });
+
+	//리뷰 스와이퍼 모바일
+	 var swiper3m = new Swiper(".mySwiper3m", {
+		  slidesPerView: 2,
+		  spaceBetween: 20,
+		  slidesPerGroup: 1,
+			scrollbar: {
+        el: ".swiper-scrollbar",
+      },
+		  navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev",
+		  },
+    });
+	
+
+
+
+	
+
+

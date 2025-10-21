@@ -1,0 +1,140 @@
+/* 전체 컨테이너 */
+.order_container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #333;
+}
+
+.order_section {
+  margin-bottom: 40px;
+}
+
+.order_section h3 {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  border-left: 6px solid #ffaf8b;
+  padding-left: 12px;
+  color: #333;
+}
+
+/* 상품 리스트 */
+.product_list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.order_product {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.order_product:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.order_thumb {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.order_info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.prd_name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.prd_quantity,
+.prd_price {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.prd_price {
+  font-weight: bold;
+  color: #ffaf8b;
+}
+
+/* 총합 */
+.product_summary {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 2px dashed #ffaf8b;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 1.05rem;
+}
+
+.product_summary span {
+  color: #ffaf8b;
+}
+
+/* 주문 버튼 */
+.order_buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.order_btn.pay {
+  flex: 1;
+  background: #ffaf8b;
+}
+
+.order_btn.pay:hover {
+  background: #ff8f5b;
+}
+
+.order_btn.cancel {
+  flex: 1;
+  background: #ccc;
+  color: #333;
+}
+
+.order_btn.cancel:hover {
+  background: #bbb;
+}
+
+/* 입력 그룹 */
+.input_group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.input_group label {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.input_group input,
+.input_group select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
