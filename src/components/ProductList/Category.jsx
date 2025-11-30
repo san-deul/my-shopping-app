@@ -15,14 +15,14 @@ export default function CategoryList({ categories, currentCategory }) {
     (cate) => Number(cate.parent_id) == parentId
   );
 
-  console.log('subCategoriess-->' , subCategories)
+  //console.log('subCategoriess-->' , subCategories)
   // 전체 탭 포함
   const allTabs = [
     { id: parentId, name: "전체" },
     ...subCategories,
   ];
 
-   console.log("🟢 allTabs:", allTabs);
+   //console.log(" allTabs:", allTabs);
 
   return (
     <div className="category-list">

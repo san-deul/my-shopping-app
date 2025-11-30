@@ -6,6 +6,7 @@ import CartHeader from "../../components/Cart/CartHeader";
 import CartList from "../../components/Cart/CartList";
 import CartFooter from "../../components/Cart/CartFooter";
 import "../../components/Cart/Cart.css";
+import { useLoading } from "../../context/LoadingContext";
 
 export default function CartPage() {
   const { user, loading } = useAuth();
@@ -13,6 +14,7 @@ export default function CartPage() {
   const [checkedItems, setCheckedItems] = useState([]);
   const [editedItems, setEditedItems] = useState({}); // ✅ 변경된 수량 저장
   const navigate = useNavigate();
+  const { setLoading } = useLoading();
 
   useEffect(() => {
     if (!loading) {
@@ -25,9 +27,12 @@ export default function CartPage() {
   }, [user, loading, navigate]);
 
   const fetchCart = async () => {
-    const { data, error } = await supabase
-      .from("cart")
-      .select(`
+    try {
+      setLoading(true);
+
+      const { data, error } = await supabase
+        .from("cart")
+        .select(`
         id,
         member_id,
         quantity,
@@ -39,13 +44,18 @@ export default function CartPage() {
           image
         )
       `)
-      .eq("member_id", user.id);
+        .eq("member_id", user.id);
 
-    if (error) {
-      console.error("장바구니 불러오기 오류:", error);
-      return;
+      if (error) throw error;
+      setCartItems(data);
+
+    } catch (error) {
+
+    } finally {
+      setLoading(false);
     }
-    setCartItems(data);
+
+
   };
 
   // ✅ 체크 기능
@@ -73,10 +83,16 @@ export default function CartPage() {
 
   // ✅ 개별 삭제
   const handleDelete = async (id) => {
-    const { error } = await supabase.from("cart").delete().eq("id", id);
-    if (!error) {
+    try {
+      setLoading(true);
+      const { error } = await supabase.from("cart").delete().eq("id", id);
+      if (error) throw error;
       setCartItems((prev) => prev.filter((i) => i.id !== id));
       setCheckedItems((prev) => prev.filter((cid) => cid !== id));
+    } catch (error) {
+      console.error("삭제 오류:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -126,12 +142,18 @@ export default function CartPage() {
     }));
     if (updates.length === 0) return alert("변경된 항목이 없습니다.");
 
-    for (const update of updates) {
-      await supabase.from("cart").update({ quantity: update.quantity }).eq("id", update.id);
+    try {
+      setLoading(true);
+      for (const update of updates) {
+        await supabase.from("cart").update({ quantity: update.quantity }).eq("id", update.id);
+      }
+      alert("변경된 수량이 모두 저장되었습니다.");
+      setEditedItems({});
+    } catch (error) {
+      console.error("저장 오류:", error);
+    } finally {
+      setLoading(false);
     }
-
-    alert("변경된 수량이 모두 저장되었습니다.");
-    setEditedItems({});
   };
 
   // ✅ 총합 계산

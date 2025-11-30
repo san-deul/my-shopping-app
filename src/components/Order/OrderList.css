@@ -17,12 +17,19 @@
   border-bottom: 1px solid #ddd;
   text-align: center;
 }
+.order-table th{text-align: center;}
+.order-table tbody tr {}
 
-.product-info {
+
+.product-info a{
   display: flex;
   align-items: center;
-  gap: 10px;
-}
+
+}/*
+.product-info img, .product-info span{
+  display: block;
+
+}*/
 
 .product-info img {
   width: 60px;
@@ -30,6 +37,7 @@
   object-fit: cover;
   border: 1px solid #eee;
   border-radius: 6px;
+  margin-right: 8px;;
 }
 
 .order-id {

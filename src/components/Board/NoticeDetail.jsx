@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabase"; // 경로 맞게 수정
 import "./Notice.css";
+import BoardButton from "./BoardButton";
 
 export default function NoticeDetail() {
   const { id } = useParams();
@@ -50,18 +51,23 @@ export default function NoticeDetail() {
         </table>
 
         <div className="notice_content">
-          {notice.img && notice.img !== "" && (
+          {Array.isArray(notice.img) && notice.img.length > 0 && (
             <div className="notice_image_wrap">
-              <img src={notice.img} alt={notice.title} className="notice_image" />
+              {notice.img.map((url, index) => (
+                <img
+                  key={index}
+                  src={url}
+                  alt={`${notice.title} 이미지 ${index + 1}`}
+                  className="notice_image"
+                />
+              ))}
             </div>
           )}
           <div className="notice_text">{notice.content}</div>
         </div>
 
         <div className="btn_area">
-          <Link to="/notice" className="btn_list">
-            목록
-          </Link>
+          <BoardButton type="list" boardType="notice" />
         </div>
       </div>
     </div>

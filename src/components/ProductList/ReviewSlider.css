@@ -1,0 +1,172 @@
+.swiper {padding:50px  10px!important}
+.review-slider-wrap {
+  width: 100%;
+  padding: 0px 20px;
+  box-sizing: border-box;
+ 
+}
+
+
+.review-card {
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height:100%;
+  padding:10px; 
+}
+
+.review-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* ✅ 이미지 비율 2:1 (가로가 세로의 2배) */
+.review-image {  
+  position: relative;
+  /*width: 100%;
+  aspect-ratio: 2 / 1; 
+  overflow: hidden;*/
+  position: relative;
+  width: 90%;
+  padding-bottom: 90%;
+  /*height:250px;*/
+ /* padding-bottom: 100%;  1:1 비율 (정사각형) */
+  overflow: hidden;
+  background: #f5f5f5;
+  margin:0 auto;
+  border-radius: 15px;
+
+}
+
+.review-image img {
+   position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 여백을 허용하면서 이미지 전체 표시 */
+  object-position: center;
+  display: block;
+}
+
+/* ✅ 콘텐츠 영역 */
+.review-content {
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.review-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 12px;
+}
+
+.review-text {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* 2줄로 제한 */
+  -webkit-box-orient: vertical;
+  flex-grow: 1;
+  height:40px;
+}
+
+.review-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #999;
+}
+
+/* Swiper 페이지네이션 */
+.swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-horizontal.swiper-pagination-bullets{
+
+  margin-top:30px !important;
+}
+.swiper-pagination-bullet {
+  background: #ccc !important;
+  opacity: 1;
+  
+}
+.swiper-pagination-bullet-active {
+  background: /*#222 !important*/ var(--main-color) !important ;
+}
+
+/* ✅ 반응형 */
+@media (max-width: 1024px) {
+
+  .review-content {
+    padding: 18px;
+  }
+  .review-title {
+    font-size: 1rem;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .review-card {
+    border-radius: 12px;
+  }
+  .review-image {
+    aspect-ratio: 16 / 9; /* 모바일에서는 조금 더 넓은 비율로 변경 */
+  }
+
+  .review-image { 
+    width:210px;
+    height:210px;
+   }
+
+}
+
+@media (max-width: 480px) {
+  .review-slider-wrap {
+    padding: 20px 10px;
+  }
+}
+
+
+/* =====================
+   Tablet  
+========================*/
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  .review-image { 
+    width:80%;
+    padding-bottom: 80%;;
+  }
+  .review-text {
+    font-size: 1rem;
+  }
+  review-date{font-size: 0.9rem;}
+
+
+}
+
+
+/* =====================
+   Mobile  
+========================*/
+@media (max-width: 767px) {
+
+  .review-image { 
+    width:65%;
+    padding-bottom: 65%;;
+  }
+  .review-text {
+    font-size: 1rem;
+  }
+
+}

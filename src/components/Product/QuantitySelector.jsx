@@ -10,7 +10,7 @@ export default function QuantitySelector({ name, price, quantity, setQuantity })
         <button onClick={() => setQuantity(q => q + 1)}>+</button>
       </div>
       <span className="price-inline">
-        +{(price * (quantity - 1)).toLocaleString()}원
+        {(price * (quantity - 1)).toLocaleString()}원
       </span>
     </div>
   );

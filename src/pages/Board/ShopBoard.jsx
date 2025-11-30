@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import PrdList from "../../components/ProductList/PrdList";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import axios from "axios";
 import CategoryList from "../../components/ProductList/Category";
 import Pagination from "../../components/common/Pagination";
@@ -16,6 +16,8 @@ export default function ShopBoard() {
   const [currentCategory, setCurrentCategory] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
 
+  const allProductsRef = useRef(null);
+
   // 카테고리 변경 시 페이지 초기화
   useEffect(() => {
     setCurrentPage(1);
@@ -25,11 +27,6 @@ export default function ShopBoard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        /*
-        const [productsRes, categoriesRes] = await Promise.all([
-          axios.get("http://localhost:5000/products"),
-          axios.get("http://localhost:5000/categories"),
-        ]);*/
 
         const [productsRes, categoriesRes] = await Promise.all([
           supabase.from("products").select("*"),
@@ -117,18 +114,20 @@ export default function ShopBoard() {
       )}
 
       {/* 상품 목록 */}
-      <PrdList
-        title={
-          categoryId === "best"
-            ? "Best Seller"
-            : categoryId === "new"
-              ? "New"
-              : currentCategory?.name || "전체 목록"
-        }
-        products={paginatedProducts}
-        useSwiper={false}
-        limit={8}
-      />
+      <div ref={allProductsRef}>
+        <PrdList
+          title={
+            categoryId === "best"
+              ? "Best Seller"
+              : categoryId === "new"
+                ? "New"
+                : currentCategory?.name || "전체 목록"
+          }
+          products={paginatedProducts}
+          useSwiper={false}
+          limit={8}
+        />
+      </div>
 
       {/* ✅ 페이지네이션 컴포넌트로 교체 */}
       <Pagination
@@ -136,7 +135,14 @@ export default function ShopBoard() {
         totalPages={totalPages}
         onPageChange={(num) => {
           setCurrentPage(num);
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          //window.scrollTo({ top: 0, behavior: "smooth" });
+          if (categoryId === "all" && allProductsRef.current) {
+            // all 페이지일 때는 전체 상품 목록 위치로 스크롤
+            allProductsRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+          } else {
+            // 다른 페이지에서는 최상단으로 스크롤
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
         }}
       />
     </div>

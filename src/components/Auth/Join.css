@@ -94,9 +94,33 @@ input[type="tel"] {
   background: #000;
   color: #fff;
 }
+button{transition: 0.3s;}
+button:hover{background:var(--main-color);}
 
 .info-text {
   font-size: 13px;
   color: #d33;
   margin-top: 4px;
+}
+
+.point{color:var(--main-color);}
+.pp{color:red; font-size: 12px;text-align: right;margin-bottom:12px;display: inline-block;}
+.error-text{color:red; margin-top: 10px;text-indent: 12px;font-size: 14px;}
+
+/* =====================
+   Tablet  
+========================*/
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  .join-form{font-size: 1rem;}
+
+}
+
+/* =====================
+   Mobile  
+========================*/
+@media (max-width: 767px) {
+
+  .join-form{font-size: 1rem;}
+  .id-check-wrap{display: flex;flex-direction: column}
 }

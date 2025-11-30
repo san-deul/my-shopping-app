@@ -1,10 +1,16 @@
+import { Link } from "react-router-dom";
+
 export default function CartItem({ item, checked, onCheck, onQuantityChange, onDelete, onSaveOne }) {
   return (
     <li className="cart-item">
       <input type="checkbox" checked={checked} onChange={onCheck} />
-      <img src={item.products.image} alt={item.products.name} className="cart-image" />
+      <Link to={`/item/${item.products?.id}`}>
+        <img src={item.products.image} alt={item.products.name} className="cart-image" />
+      </Link>
       <div className="cart-info">
-        <p className="cart-name">{item.products.name}</p>
+        <Link to={`/item/${item.products?.id}`}>
+          <p className="cart-name">{item.products.name}</p>
+        </Link>
         <p className="cart-price">{item.products.price.toLocaleString()}원</p>
         <div className="cart-quantity">
           <button onClick={() => onQuantityChange(item.id, item.quantity - 1)}>-</button>

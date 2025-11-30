@@ -11,18 +11,20 @@ import 'swiper/css/navigation';
 // import required modules
 import { Navigation, Autoplay } from 'swiper/modules';
 
-import "./Visual.css"
-//import v1 from "../../assets/images/visual1.png"
-import v2 from "../../assets/images/visual2.png"
-import v3 from "../../assets/images/visual3.png"
+import "./Visual.css";
+//import v1 from "../../assets/images/visual1.png";
+import v1 from "../../assets/images/visual1.png"
+import v2 from "../../assets/images/visual2-1.png"
+
+//import v3 from "../../assets/images/visual3.png"
 
 import btnLeft from "../../assets/images/slide_left.png"
 import btnRight from "../../assets/images/slide_right.png"
 
 const visualImages = [
  
-  { id: 1, src: v2, alt: "비주얼 슬라이드 2" },
-  { id: 2, src: v3, alt: "비주얼 슬라이드 3" },
+  { id: 1, src: v1, alt: "비주얼 슬라이드 2" },
+  { id: 2, src: v2, alt: "비주얼 슬라이드 3" },
 ];
 
 
@@ -37,7 +39,7 @@ export default function Visual() {
         navigation={false} 
         autoplay={{delay:2500,  disableOnInteraction: false}} 
         loop={true}
-        className="mySwiper"
+        className="mySwiper visualSwiper"
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}>

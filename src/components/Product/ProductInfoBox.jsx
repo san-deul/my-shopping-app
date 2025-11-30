@@ -49,7 +49,7 @@ export default function ProductInfoBox({
         <button className="cart" onClick={onAddToCart}>
           장바구니
         </button>
-        <button className="wish">관심상품</button>
+
       </div>
     </div>
   );

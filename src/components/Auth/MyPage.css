@@ -35,21 +35,22 @@
   gap: 6px;
 }
 
-.mypage-profile h2 {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
-}
+
 
 .mypage-profile p {
-  margin: 2px 0;
+  margin: 6px 0;
   font-size: 0.95rem;
   color: #666;
 }
-
+.mypage-profile p:first-child{
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color:#000
+}
 /* 내정보 변경 버튼 */
 .mypage-edit-btn a {
-  display: inline-block;
+  display: block;
   background: #222;
   color: #fff;
   padding: 8px 16px;

@@ -36,12 +36,16 @@
    .footer{padding: 20px 0;}
    .footer_in {width:96%;margin:0 auto; flex-direction: column}
    .f_left, .f_right{width:100%;}
+   .f_left{font-size: 1rem;}
+   .f_right{font-size: 1rem;}
    .footer_in .f_left .f_logo{display:none;}
    .f_left .f_num{margin-left:0}
+   .f_left .f_num p{font-size: 1rem;}
+   .f_left .f_num strong{font-size:1.867rem}
    .f_right{margin-top:24px;display: flex;flex-direction: column-reverse;}
    .f_right address{margin:0 }
    .f_right .f_list{margin:20px 0; }
-   .footer .copy {text-align: left;text-indent:20px;margin-top:20px}
+   .footer .copy {text-align: left;text-indent:20px;margin-top:20px;font-size:0.867rem}
 }
 
 /* =====================
@@ -52,11 +56,15 @@
    .footer{padding: 20px 0;}
    .footer_in {width:96%;margin:0 auto; flex-direction: column}
    .f_left, .f_right{width:100%;}
+   .f_left{font-size: 1rem;}
+   .f_right{font-size: 1rem;}
    .footer_in .f_left .f_logo{display:none;}
    .f_left .f_num{margin-left:0}
+   .f_left .f_num p{font-size: 1rem;}
+   .f_left .f_num strong{font-size:2rem}
    .f_right{margin-top:24px;display: flex;flex-direction: column-reverse;}
    .f_right address{margin:0 }
    .f_right .f_list{display: none; }
-   .footer .copy {text-align: left;text-indent:20px;margin-top:20px}
+   .footer .copy {text-align: left;text-indent:20px;margin-top:20px;font-size:0.857rem}
 
 }

@@ -1,0 +1,70 @@
+/* src/components/common/CommonBtn.css */
+
+.common-btn {
+  width:140px;
+  height:40px;
+  
+  margin: 4px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color:#fff !important;
+
+}
+
+.common-btn:hover {
+  background-color: #f5f5f5;
+}
+
+/* ✅ 기본형 */
+.common-btn-default {
+  background-color: #ccc;
+}
+
+/* ✏️ 등록/작성용 */
+.common-btn-write {
+  background-color: #ccc;
+  color: #fff;
+  border: none;
+}
+
+.common-btn-write:hover {
+  background-color: var(--main-color, #888);
+}
+
+/* 🛠 수정용 */
+.common-btn-edit {
+  background-color: #ccc;
+  color: white;
+  border: none;
+}
+
+.common-btn-edit:hover {
+  background-color: var(--main-color);
+}
+
+/* ❌ 삭제용 */
+.common-btn-delete {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+}
+
+.common-btn-delete:hover {
+  background-color: #b02a37;
+}
+
+/* 비활성화 */
+.common-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

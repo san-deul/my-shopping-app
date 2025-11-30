@@ -156,11 +156,22 @@
    Tablet  
 ========================*/
 @media (min-width: 768px) and (max-width: 1023px) {
-
-  .section_lists .list{width: 47.5%;margin-bottom:74px;position:relative;background:#fff;}
   .section_lists{
-  justify-content: space-between;}
+  justify-content: space-between;
+  width:100%;
+  max-width: 100%;
+ justify-content: flex-start}
+  .section_lists .list{width: calc((100% - (2% * 3)) / 4);
+    margin-bottom:74px;position:relative;background:#fff;}
+  
 
+  .item_txt .i_title a{font-size: 1rem}
+  .i_price .i_price1{font-size: .933rem}
+  .i_price .i_price2 span{font-size: .933rem}
+
+  .custom-area{display: none;}
+  .swiper-wrap{width:100%;padding-bottom: 50px;;}
+  .swiper.prdSwiper{    padding: 25px 0px !important;}
 }
 
 
@@ -173,4 +184,11 @@
   .section_lists{
   justify-content: space-between;}
 
+  .item_txt .i_title a{font-size: 1rem}
+  .i_price .i_price1{font-size: 0.875rem}
+  .i_price .i_price2 span{font-size: 0.875rem}
+
+  .custom-area{display: none;}
+  
+  .swiper.prdSwiper{    padding: 25px 0px !important;}
 }

@@ -8,34 +8,29 @@ import wishIcon from "../../../assets/images/wish.png"
 
 
 
-export default function MobileUtil() {
+export default function MobileUtil(closeMobileMenu ) {
 
   return (
     <div className="mobile_util">
       <div>
-        <Link to="/login">
+        <Link to="/login" onClick={closeMobileMenu}>
           <p><img src={myIcon} /></p>
           <p>로그인</p>
         </Link>
       </div>
       <div>
-        <Link to="/join">
+        <Link to="/join" onClick={closeMobileMenu}>
           <p><img src={myIcon} /></p>
           <p>회원가입</p>
         </Link>
       </div>
       <div>
-        <Link to="">
+        <Link to="/cart" onClick={closeMobileMenu}>
           <p><img src={cartIcon} /></p>
           <p>장바구니</p>
         </Link>
       </div>
-      <div>
-        <Link to="">
-          <p><img src={wishIcon} /></p>
-          <p>위시리스트</p>
-        </Link>
-      </div>
+
     </div>
   )
 }

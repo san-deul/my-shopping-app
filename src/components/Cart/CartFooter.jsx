@@ -1,3 +1,5 @@
+import CommonBtn from "../common/CommonBtn";
+
 export default function CartFooter({ totalPrice, onOrder, onCheckedDelete, onAllDelete, onSaveAll }) {
   return (
     <div className="cart-footer">
@@ -9,7 +11,11 @@ export default function CartFooter({ totalPrice, onOrder, onCheckedDelete, onAll
       <p>
         선택 상품 금액: <strong>{totalPrice.toLocaleString()}원</strong>
       </p>
-      <button className="order-btn" onClick={onOrder}>주문하기</button>
+      <CommonBtn
+        label="주문하기"
+        type="write"
+        onClick={onOrder}
+      />
     </div>
   );
 }

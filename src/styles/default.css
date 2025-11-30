@@ -2,6 +2,7 @@
     --main-font: 'Pretendard', sans-serif; /* 폰트 변수 */
     
     --main-color:#ffaf8b;
+    --main-hover:#f77f48;;
 }
 *{
     box-sizing: border-box; 
@@ -10,7 +11,20 @@ body {
     font-family: var(--main-font);
 
 }
+html {
+    font-size: 16px; /* PC 기준 rem 기준값 */
+}
+@media (max-width: 1023px) {
+    html {
+        font-size: 15px; /* 태블릿 */
+    }
+}
 
+@media (max-width: 767px) {
+    html {
+        font-size: 14px; /* 모바일 */
+    }
+}
 
 .content-area {
     width: 100%;
@@ -35,15 +49,41 @@ body {
 .section{width: 100%;max-width : 1280px;height:auto;margin:115px auto 0;text-align: center;position: relative;}
 .section_in{width: 98%;margin:60px auto 0; position:Relative;text-align:center;}
 .title{display:inline-block;margin:0 auto;font-family:var(--mainfont);font-size:32px;font-weight:500;position:relative;line-height:1;} 
-
 .title::after{content:'';position:Absolute;bottom:-15px;left:50%;transform:translateX(-50%);width: 30%;height:2px;background:var(--main-color);}
+.main_more{position: absolute;top:0;right:0;        
+        width: 40px;
+        height: 40px;
+        background: #f5cecf;}
 
+.main_more a{        
+    display: block;
+        width: 100%;
+        height: 100%;}
+
+.main_more img{        
+    position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);}
 /* =====================
    Tablet  
 ========================*/
 @media (min-width: 768px) and (max-width: 1023px) {
+    .section{max-width: 100%;}
+    .section_in{width:96%}
+    .title{font-size: 2rem;}
+    .subpage-content {
+        padding-top: 30px;
+        padding-bottom:50px; }
 
-  .section_in{width:96%}
+}
 
+/* =====================
+   Mobile  
+========================*/
+@media (max-width: 767px) {
+    .content-area {width:96%}
+    .section_in{width:96%}
+    .title{font-size: 2.143rem;}
 
 }

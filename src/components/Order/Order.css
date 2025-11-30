@@ -19,6 +19,15 @@ h2 {
 .order_section {
   margin-bottom: 40px;
 }
+.order_section button{
+  
+  padding: 8px 20px;
+  border: 1px solid var(--main-color);
+  font-size: 1rem;
+  cursor: pointer;
+  color:#fff;
+  background:var(--main-color);
+}
 
 .order_section h3 {
   font-size: 1.4rem;
@@ -101,13 +110,22 @@ h2 {
   margin-top: 20px;
 }
 
+.order_buttons button{
+  flex: 1;
+  padding: 15px 0;
+  border: 1px solid #eee;
+  font-size: 1rem;
+  cursor: pointer;
+  color:#fff;
+}
+
 .order_btn.pay {
   flex: 1;
-  background: #ffaf8b;
+  background: var(--main-color);
 }
 
 .order_btn.pay:hover {
-  background: #ff8f5b;
+  background: var(--main-hover);
 }
 
 .order_btn.cancel {

@@ -11,7 +11,7 @@ export default function NoticeBoard() {
     const fetchNotices = async () => {
       try {
         setLoading(true);
-        /*const { data } = await axios.get("http://localhost:5000/notices");*/
+        
         const { data, error} = await supabase
         .from("notices")
         .select("*")

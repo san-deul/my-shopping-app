@@ -3,19 +3,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-
-
 import moreBtn from "../../assets/images/plus_btn.png"
 import { Link } from "react-router-dom";
-
-
 import { Pagination, Navigation } from 'swiper/modules';
-
 import "./PrdList.css";
-
 import btnLeft from "../../assets/images/slide_left2.png"
 import btnRight from "../../assets/images/slide_right2.png"
-
+import noimage from "../../../src/assets/images/noimage.jpg"
 
 
 
@@ -29,15 +23,15 @@ export default function PrdList({ title, products = [], useSwiper = false, limit
   const paginationRef = useRef(null);
   const swiperRef = useRef(null); // Swiper 인스턴스 담을 ref
 
-
-
-
   const content = displayedProducts.map((item) => (
 
     <li className="sct_li list" key={item.id}>
       <div className="item_img">
         <Link to={`/item/${item.id}`}>
-          <img src={item.image} />
+          <img src={item.image ? item.image :`${noimage}`}
+                alt={item.title || "이미지 없음"}
+                onError={(e) => e.target.src = noimage}
+           />
         </Link>
       </div>
       <div className="item_txt">
@@ -47,6 +41,7 @@ export default function PrdList({ title, products = [], useSwiper = false, limit
           </Link>
         </p>
         <div className="i_price">
+          
           <div className="i_price1">
             <span>{item.originalPrice.toLocaleString()}</span>원
           </div>
@@ -94,8 +89,12 @@ export default function PrdList({ title, products = [], useSwiper = false, limit
             breakpoints={{
               // 0px 이상 (모든 화면, 즉 기본 모바일) 에서 slidesPerView: 2, spaceBetween: 10
               0: {
-                slidesPerView: 2,
+                slidesPerView: 1.5,
                 spaceBetween: 10,
+              },
+              768:{
+                slidesPerView:3.8,
+                spaceBetween:20,
               },
               // 768px 이상일 때 slidesPerView: 4, spaceBetween: 20 (기존 데스크탑 설정)
               1023: {
@@ -104,7 +103,7 @@ export default function PrdList({ title, products = [], useSwiper = false, limit
               },
             }}
 
-            className="mySwiper"
+            className="mySwiper prdSwiper"
             //navigation={true}
             navigation={{
               prevEl: prevRef.current,
@@ -135,7 +134,11 @@ export default function PrdList({ title, products = [], useSwiper = false, limit
               <SwiperSlide key={item.id}>
                 <div className="item_img">
                   <Link to={`/item/${item.id}`}>
-                    <img src={item.image} />
+                    <img 
+                      src={item.image ? item.image : `${noimage}`}
+                      alt={item.name || "이미지 없음"}
+                      onError={(e) => e.target.src = noimage} 
+                      />
                   </Link>
                 </div>
                 <div className="item_txt">

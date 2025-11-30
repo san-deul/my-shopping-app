@@ -2,8 +2,10 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 60px;
-  padding: 60px 0;
+  gap: 30px;
+  padding: 60px 15px;
+  max-width: 900px;
+  margin:0 auto;
 }
 
 .product-detail-left {
@@ -50,6 +52,7 @@
 .product-name {
   font-size: 1.4rem;
   font-weight: 700;
+  text-align: left;
 }
 
 .tags {
@@ -96,12 +99,14 @@
 
 .quantity-box {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;;
   justify-content: space-between;
   margin: 20px 0;
 }
 
 .quantity-btns {
+  margin-top:15px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -115,7 +120,7 @@
   cursor: pointer;
   font-size: 16px;
 }
-
+.price-inline{margin-top:5px;}
 .total {
   font-size: 1.1rem;
   font-weight: 600;
@@ -129,19 +134,51 @@
 .action-buttons button {
   flex: 1;
   padding: 15px 0;
-  border: 1px solid #111;
+  border: 1px solid #eee;
   font-size: 1rem;
   cursor: pointer;
+  
 }
 
 .action-buttons .buy {
-  background-color: #f9c9c9;
+  background-color: var(--main-color);
   color: #fff;
   border: none;
 }
 
-.action-buttons .cart,
-.action-buttons .wish {
-  background-color: #fff;
-  color: #111;
+.action-buttons .buy:hover{
+  background-color: var(--main-hover);
+}
+
+.action-buttons .cart {
+  background-color: var(--main-color);
+  color:#fff;
+}
+.action-buttons .cart:hover{
+  background-color: var(--main-hover);
+}
+
+
+/* =====================
+   Tablet  
+========================*/
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  .product-detail{flex-direction: column;font-size: 1rem;}
+  .product-detail-right {width: 100%;}
+  .quantity-box{align-items: flex-start}
+}
+
+
+/* =====================
+   Mobile  
+========================*/
+@media (max-width: 767px) {
+  .product-detail-left{width: 100%;flex-direction: column;}
+  .thumbnail-swiper{display: flex;width:100%;height:auto}
+  .product-detail{flex-direction: column;font-size: 1rem;}
+  .product-detail-right {width: 100%;}
+  .quantity-box{align-items: flex-start}
+
 }

@@ -144,7 +144,7 @@ export default function OrderPage() {
 
   return (
     <div className="order_container">
-      <h2>주문/결제</h2>
+
 
       <OrderProductList products={products} totalPrice={totalPrice} />
       <OrderMemberInfo member={member} setMember={setMember} />

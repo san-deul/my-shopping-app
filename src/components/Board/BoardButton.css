@@ -1,0 +1,45 @@
+.board-btn {
+  padding: 8px 16px;
+  margin: 4px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.board-btn:hover {
+  background-color: #f5f5f5;
+}
+
+.board-btn-write {
+  background-color: #ccc;
+  color: white;
+  border: none;
+}
+
+.board-btn-write:hover {
+  background-color: var(--main-color);
+}
+
+.board-btn-edit {
+  background-color: #ffc107;
+  color: white;
+  border: none;
+}
+
+.board-btn-edit:hover {
+  background-color: #e0a800;
+}
+
+.board-btn-delete {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+}
+
+.board-btn-delete:hover {
+  background-color: #b02a37;
+}

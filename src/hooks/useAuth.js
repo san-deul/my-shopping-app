@@ -3,7 +3,7 @@ import { supabase } from "../lib/supabase";
 
 export default function useAuth() {
   const [user, setUser] = useState(null);
-  const [level, setLevel] = useState(null); // 👈 level 추가
+  const [member, setMember] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -17,23 +17,24 @@ export default function useAuth() {
 
       // 2️⃣ 로그인 상태라면 member 테이블에서 level 조회
       if (currentUser?.email) {
-        const { data: member, error } = await supabase
+        const { data, error } = await supabase
           .from("member")
-          .select("level")
+          .select("email,name,level")
           .eq("email", currentUser.email)
           .single();
 
-        if (!error && member) {
-          setLevel(member.level);
+        if (!error && data) {
+          setMember(data);
         } else {
-          setLevel(null);
+          setMember(null);
         }
       } else {
-        setLevel(null);
+        setMember(null);
       }
 
       setLoading(false);
     };
+
 
     getSessionAndLevel();
 
@@ -44,16 +45,16 @@ export default function useAuth() {
         // 상태 변경 시 level 다시 불러오기
         supabase
           .from("member")
-          .select("level")
+          .select("name, level")
           .eq("email", session.user.email)
           .single()
           .then(({ data, error }) => {
-            if (!error && data) setLevel(data.level);
-            else setLevel(null);
+            if (!error && data) setMember(data);
+            else setMember(null);
           });
       } else {
         setUser(null);
-        setLevel(null);
+        setMember(null);
       }
       setLoading(false);
     });
@@ -61,6 +62,6 @@ export default function useAuth() {
     return () => listener.subscription.unsubscribe(); // 정리코드
   }, []);
 
-  // ✅ user, level, loading 반환
-  return { user, level, loading };
+  // ✅ user, memer, loading 반환
+  return { user, member, loading };
 }

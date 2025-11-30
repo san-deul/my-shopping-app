@@ -2,8 +2,10 @@ import { useState } from "react";
 import "../Auth/Join.css";
 import { useDaumPostcodePopup } from "react-daum-postcode";
 import { supabase } from "../../lib/supabase";
+import { useNavigate } from "react-router-dom";
 
 export default function JoinForm() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -16,6 +18,7 @@ export default function JoinForm() {
   });
 
   const [isEmailChecked, setIsEmailChecked] = useState(false);
+  const [passwordMatch, setPasswordMatch] = useState(true);
   const open = useDaumPostcodePopup();
 
   /** 입력값 변경 */
@@ -43,6 +46,15 @@ export default function JoinForm() {
     }
 
     setForm((prev) => ({ ...prev, [name]: value }));
+
+    if (name === "confirmPassword" || name === "password") {
+      setPasswordMatch(
+        name === "password"
+          ? value === form.confirmPassword
+          : form.password === value
+      );
+    }
+
   };
 
   /** 정규식 검증 */
@@ -157,7 +169,13 @@ export default function JoinForm() {
       // 3️⃣ member ID를 Auth user ID로 교체
       await supabase.from("member").update({ id: authData.user.id }).eq("id", tempId);
 
-      alert("🎉 회원가입 완료! 이메일 인증을 확인해주세요.");
+      const confirmGoMain = window.confirm(
+        `🎉 회원가입을 축하합니다, ${form.name}님!\n\n메인 페이지로 이동하시겠습니까?`
+      );
+
+      if (confirmGoMain) {
+        navigate("/"); // ✅ 메인으로 이동
+      }
 
       setForm({
         email: "",
@@ -177,11 +195,34 @@ export default function JoinForm() {
     }
   };
 
+  const handleResetForm = () => {
+    const ok = window.confirm("작성 중인 내용을 모두 지우시겠습니까?");
+    if (!ok) return;
+
+    setForm({
+      email: "",
+      password: "",
+      confirmPassword: "",
+      name: "",
+      phone: "",
+      zipcode: "",
+      basic_address: "",
+      detail_address: "",
+    });
+    setIsEmailChecked(false);
+    setPasswordMatch(true);
+    setTimeout(() => {
+      const emailInput = document.getElementById("email");
+      if (emailInput) emailInput.focus();
+    }, 50);
+  };
+
   return (
     <form className="join-form" onSubmit={handleSubmit}>
       {/* 이메일(ID) */}
       <div className="form-group">
-        <label htmlFor="email">이메일 (아이디로 사용) *</label>
+        <span class="pp">* 필수</span>
+        <label htmlFor="email"><span class="point">*</span> 아이디 (사용가능한 이메일을 적어주세요) </label>
         <div className="id-check-wrap">
           <input
             type="email"
@@ -200,7 +241,7 @@ export default function JoinForm() {
 
       {/* 비밀번호 */}
       <div className="form-group">
-        <label htmlFor="password">비밀번호 *</label>
+        <label htmlFor="password"><span class="point">*</span> 비밀번호 </label>
         <input
           type="password"
           id="password"
@@ -213,7 +254,7 @@ export default function JoinForm() {
 
       {/* 비밀번호 확인 */}
       <div className="form-group">
-        <label htmlFor="confirmPassword">비밀번호 확인 *</label>
+        <label htmlFor="confirmPassword"><span class="point">*</span> 비밀번호 확인 </label>
         <input
           type="password"
           id="confirmPassword"
@@ -222,11 +263,14 @@ export default function JoinForm() {
           onChange={handleChange}
           required
         />
+        {!passwordMatch && form.confirmPassword && (
+          <p className="error-text">비밀번호가 일치하지 않습니다.</p>
+        )}
       </div>
 
       {/* 이름 */}
       <div className="form-group">
-        <label htmlFor="name">이름 *</label>
+        <label htmlFor="name"><span class="point">*</span> 이름 </label>
         <input
           type="text"
           id="name"
@@ -239,7 +283,7 @@ export default function JoinForm() {
 
       {/* 휴대폰 */}
       <div className="form-group">
-        <label htmlFor="phone">휴대폰번호 *</label>
+        <label htmlFor="phone"><span class="point">*</span> 휴대폰번호</label>
         <input
           type="tel"
           id="phone"
@@ -288,7 +332,7 @@ export default function JoinForm() {
 
       {/* 버튼 */}
       <div className="join-btn-wrap">
-        <button type="button" className="btn-cancel">
+        <button type="button" className="btn-cancel" onClick={handleResetForm}>
           취소
         </button>
         <button type="submit" className="btn-submit">

@@ -9,15 +9,15 @@ import ShopBoard from "../pages/Board/ShopBoard";
 import NotFound from "../components/layout/Etc/NotFound";
 import NoticeBoard from "../pages/Board/NoticeBoard";
 import NoticeDetail from "../components/Board/NoticeDetail";
-import NoticeWrite from "../components/Board/NoticeWrite";
-import ReviewWrite from "../components/Board/ReviewWrite";
-import MypageModify from "../components/Auth/MypageModify";
 import PrivateRoute from "../components/common/PrivateRoute";
 import ProductDetailPage from "../pages/Product/ProductDetailPage";
 import OrderPage from "../pages/Order/OrderPage";
 import CartPage from "../pages/Cart/CartPage";
 import MyPage from "../pages/Auth/MyPage";
 import OrderListPage from "../pages/Order/OrderListPage";
+import ReviewWrite from "../pages/Board/ReviewWrite";
+import NoticeWrite from "../pages/Board/NoticeWrite";
+import MypageModify from "../pages/Auth/MyPageModify";
 // import CreateAdmin from "../pages/CreateAdmin";
 
 
@@ -33,6 +33,7 @@ export const router = createBrowserRouter([
       { path: "/mypage/modify", element: <MypageModify /> , handle: {title:"마이페이지"} },
       { path: "/cart", element: <CartPage /> , handle: {title:"장바구니"} },
       { path: "/mypage/orders", element: <OrderListPage /> , handle: {title:"주문내역"} },
+      { path: "/mypage/orders2", element: <OrderPage /> , handle: {title:"주문내역"} },
 
       // 제품 관련
       { path: "/shop/:categoryId", element: <ShopBoard />, handle: {title:""} },

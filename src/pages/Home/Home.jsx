@@ -4,31 +4,31 @@ import { supabase } from "../../lib/supabase"; // axios 대신 supabase
 import PrdList from "../../components/ProductList/PrdList";
 import Visual from "../../components/Visual/Visual";
 import "../../styles/default.css"
+import ReviewSlider from "../../components/ProductList/ReviewSlider";
 
 function Home() {
   const [products, setProducts] = useState([]);
+  const [reviews, setReviews] = useState([])
   const [isMobile, setIsMobile] = useState(false);
   
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchData = async () => {
       try {
-        // axios 대신 supabase 쿼리
-        const { data, error } = await supabase
-          .from("products")
-          .select("*");
-        
-          //console.log('data-->', data)
-        if (error) throw error;
-        
-        setProducts(data);
-        //console.log('products1-->',products)
+        const [productRes, reviewRes] = await Promise.all([
+          supabase.from("products").select("*"),
+          supabase.from("reviews").select("*").order("id", { ascending: false }),
+        ]);
+
+        if (productRes.error) throw productRes.error;
+        if (reviewRes.error) throw reviewRes.error;
+
+        setProducts(productRes.data);
+        setReviews(reviewRes.data);
       } catch (error) {
         console.error("데이터 불러오기 오류:", error);
       }
     }
-    //console.log('products-->', products)
-    fetchProducts();
-    //console.log('products22222-->', products)
+    fetchData();
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 1023);
     };
@@ -40,7 +40,7 @@ function Home() {
       window.removeEventListener('resize', handleResize);
     };
   }, [])
-  //console.log('productss333-->',products)
+  console.log('reviews-->',reviews)
   const newProducts = products.filter((item) => item.isNew);
   console.log('newProducts-->' , newProducts)
   const bestProducts = products.filter((item) => item.isBest);
@@ -51,6 +51,7 @@ function Home() {
       <Visual />
       <PrdList title="Best Seller" products={bestProducts} limit={itemLimit} showMore={true} moreLink="/shop/best" />
       <PrdList title="New Item" products={newProducts} limit={itemLimit} showMore={true} moreLink="/shop/new" />
+      <ReviewSlider title="Review" reviews={reviews} showMore={true} moreLink="/review" />
     </>
   )
 }

@@ -19,7 +19,7 @@ text-align: left;
 
 }
 .list_con .list_name{
-      color: #b4b4b4;
+      color: var(--main-color);
     font-size: 16px;
     padding: 10px 0 5px;
     font-family: var(--mainfont);
@@ -28,7 +28,17 @@ text-align: left;
     font-weight: bold;
     font-family: var(--mainfont);
     margin-top: 7px;} 
-.list_etc{width: 20%;font-size:14px;color:#999}
+.list_con .list_content{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* 2줄로 제한 */
+  -webkit-box-orient: vertical;
+  flex-grow: 1;
+  color:#d1d0d0;
+  margin-top:10px;
+}
+    .list_etc{width: 20%;font-size:14px;color:#999}
 .list_etc .list_date{margin-top:5px;}
 
 
@@ -44,7 +54,7 @@ text-align: left;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 99000;
 }
 
 /* 모달 내용 */
@@ -56,6 +66,7 @@ text-align: left;
   padding: 20px;
   position: relative;
   animation: fadeIn 0.25s ease;
+  
 }
 
 /* 닫기 버튼 */
@@ -70,6 +81,7 @@ text-align: left;
 }
 
 /* 모달 안 텍스트 스타일 */
+.modal_img{width: 250px;height: 250px;margin:0 auto;}
 .modal_body img {
   width: 100%;
   aspect-ratio: 1 / 1; /* 정사각형 비율 고정 */

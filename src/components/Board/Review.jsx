@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import "./Review.css";
 import { Link } from "react-router-dom";
 import Pagination from "../common/Pagination";
+import BoardButton from "./BoardButton";
+import useAuth from "../../hooks/useAuth";
+import noimage from "../../../src/assets/images/noimage.jpg"
+
+
 
 export default function Review({ lists = [] }) {
   // --- 상태 관리 ---
@@ -15,14 +20,15 @@ export default function Review({ lists = [] }) {
   const indexOfLast = currentPage * itemsPerPage;
   const indexOfFirst = indexOfLast - itemsPerPage;
   const currentLists = lists.slice(indexOfFirst, indexOfLast);
+  console.log('cccccc-->', currentLists)
 
   // --- 아이디 마스킹 ---
-  const maskUserId = (userId) => {
-    if (userId && userId.length > 3) {
-      const prefix = userId.substring(0, 3);
+  const maskUserId = (user_id) => {
+    if (user_id && user_id.length > 2) {
+      const prefix = user_id.substring(0, 2);
       return prefix + "***";
     }
-    return userId || "";
+    return user_id || "";
   };
 
   // --- 모달 제어 ---
@@ -40,18 +46,32 @@ export default function Review({ lists = [] }) {
     setCurrentPage(pageNum);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+  const { user, member, loading } = useAuth(); // ✅ level 바로 가져오기
 
+  console.log('member-->>', member)
+  console.log('=->', currentLists)
   return (
     <div className="section">
       <div className="section_in">
         {lists.length > 0 ? (
           <>
+            {member?.level === 1 && (
+              <div className="btn_area" style={{ textAlign: "right", marginTop: "20px" }}>
+                <BoardButton type="write" boardType="review" />
+              </div>
+            )}
             <ul className="board_lists">
               {currentLists.map((item) => (
+                
                 <li key={item.id} className="board_list">
                   <div className="list_img">
-                    <Link to={`/item/${item.productId}`}>
-                      <img src={item.img} alt={item.title} />
+                    <Link to={`/item/${item.product_id}`}>
+                      <img
+                        src={item.product_img || noimage}
+                        onError={(e) => e.target.src = noimage}
+                        alt={item.name || "상품 이미지"}
+                      />
+
                     </Link>
                   </div>
 
@@ -61,12 +81,14 @@ export default function Review({ lists = [] }) {
                     onClick={() => openModal(item)}
                     style={{ cursor: "pointer" }}
                   >
-                    <p className="list_name">{item.productId}</p>
+                    <p className="list_name">{item.product_name}</p>
                     <p className="list_title">{item.title}</p>
+                    <p className="list_content">{item.content}</p>
+
                   </div>
 
                   <div className="list_etc">
-                    <p className="list_user">작성자: {maskUserId(item.userId)}</p>
+                    <p className="list_user">작성자: {maskUserId(item.user_id)}</p>
                     <p className="list_date">{item.date}</p>
                   </div>
                 </li>
@@ -74,7 +96,7 @@ export default function Review({ lists = [] }) {
             </ul>
 
             {/* ✅ 페이지네이션 */}
-            <Pagination 
+            <Pagination
               currentPage={currentPage}
               totalPages={totalPages}
               onPageChange={handlePageChange} />
@@ -94,12 +116,19 @@ export default function Review({ lists = [] }) {
                 ✕
               </button>
               <div className="modal_body">
-                <img src={selectedItem.img} alt={selectedItem.title} />
+                <div className="modal_img">
+                  
+                  <img src={selectedItem.img || noimage } 
+                      alt={selectedItem.title} 
+                      onError={(e) => e.target.src = noimage}/>
+
+                </div>
+
                 <h3>{selectedItem.title}</h3>
-                <p>상품 ID: {selectedItem.productId}</p>
-                <p>작성자: {maskUserId(selectedItem.userId)}</p>
-                <p>작성일: {selectedItem.date}</p>
+                <p>상품명 {selectedItem.product_name}</p>
+                <p>작성자: {maskUserId(selectedItem.user_id)}</p>
                 <p className="modal_review">{selectedItem.content}</p>
+                <p>작성일: {selectedItem.date}</p>
               </div>
             </div>
           </div>

@@ -12,6 +12,13 @@
 .notice_table tbody tr td{padding:12px 0;border-top:1px solid #d7d7d7 }
 .notice_table{border-bottom:1px solid #d7d7d7}
 
+.notice_table thead tr th:first-child{width: 10%}
+.notice_table thead tr th:nth-child(3){width: 10%;}
+.notice_table thead tr th:last-child{width: 15%}
+
+.notice_table tbody tr td:first-child{width: 10%;}
+.notice_table tbody tr td:nth-child(3){width: 10%;}
+.notice_table tbody tr td:last-child{width: 15%;}
 
 /* =====================
    NoticeDetail.
@@ -90,4 +97,14 @@
 
 .notice_write .del_btn:hover {
   color: #e74c3c;
+}
+/* =====================
+   Mobile  
+========================*/
+@media (max-width: 767px) {
+  .notice_table thead tr th:last-child{display: none;}
+  .notice_table tbody tr td:last-child{display: none;}
+
+  .notice_table thead tr th:nth-child(2){width:60%;}
+
 }

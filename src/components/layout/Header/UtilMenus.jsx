@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function UtilMenus({ menus, openUtil, setOpenUtil }) {
+
+
   return (
     <ul className="pc_util">
       {menus.map((menu) => (
@@ -22,7 +24,7 @@ export default function UtilMenus({ menus, openUtil, setOpenUtil }) {
               {menu.children.map((child) => (
                 <li key={child.key}>
                   {child.onClick ? (
-                    <Link 
+                    <Link
                       to="#"
                       onClick={(e) => {
                         e.preventDefault();
@@ -32,7 +34,7 @@ export default function UtilMenus({ menus, openUtil, setOpenUtil }) {
                       {child.label}
                     </Link>
                   ) : (
-                    <Link to={child.to}>{child.label}</Link>
+                    <Link to={child.to} state={child.state}>{child.label}</Link>
                   )}
                 </li>
               ))}

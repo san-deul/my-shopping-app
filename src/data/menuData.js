@@ -46,11 +46,11 @@ export const utilMenus = [
     key: "my",
     icon: myIcon,
     to: "#",
-    children: [
+   /* children: [
       { key: 1, label: "회원가입", to: "/join" },
       { key: 2, label: "로그인", to: "/login" },
       { key: 3, label: "마이페이지", to: "/mypage" },
-    ],
+    ],*/
   },
   {
     key: "cart",

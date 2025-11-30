@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { supabase } from "../../lib/supabase";
 import "./Login.css";
 
 export default function LoginForm() {
   const navigate = useNavigate();
+  const location = useLocation(); //
   const [formData, setFormData] = useState({
     email: "",   // Supabase Auth는 이메일 기준 로그인
     password: "",
@@ -31,7 +32,7 @@ export default function LoginForm() {
       });
 
       if (error) {
-        alert("로그인 실패: " + error.message);
+        alert("아이디 또는 비밀번호가 잘못 되었습니다.\n아이디와 비밀번호를 정확히 입력해 주세요.");
         return;
       }
 
@@ -39,7 +40,8 @@ export default function LoginForm() {
       console.log("로그인 유저:", data.user);
       localStorage.setItem("loginUser", JSON.stringify(data.user));
       alert(`${data.user.email}님, 로그인 되었습니다! 🎉`);
-      navigate("/");
+      const redirectTo = location.state?.from || "/";
+      navigate(redirectTo, { replace: true });
     } catch (err) {
       console.error(err);
       alert("서버 연결 중 오류가 발생했습니다.");
@@ -48,7 +50,7 @@ export default function LoginForm() {
 
   return (
     <div className="login-container">
-      
+
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="input-wrap">
           <input
@@ -69,7 +71,7 @@ export default function LoginForm() {
           />
         </div>
         <button type="submit" className="login-btn">
-          LOG-IN
+          로그인
         </button>
       </form>
     </div>

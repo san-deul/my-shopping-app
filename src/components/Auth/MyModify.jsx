@@ -1,61 +1,44 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
-import "../Auth/Join.css"; // 기존 Join 스타일 그대로 사용
 import { useDaumPostcodePopup } from "react-daum-postcode";
 
-export default function MypageModify() {
+
+export default function MyModify({ userData, onSubmit, onVerifyPassword }) {
   const [form, setForm] = useState({
-    id: "",
+    userId: "",
+    email: "",
     currentPassword: "",
     newPassword: "",
     confirmPassword: "",
     name: "",
-    email: "",
     phone: "",
     zipcode: "",
     basic_address: "",
     detail_address: "",
   });
 
-  const API_URL = "http://localhost:5000/member";
   const open = useDaumPostcodePopup();
 
-  /** ✅ 기존 회원정보 불러오기 (예시용) */
+  /** ✅ 초기 데이터 설정 */
   useEffect(() => {
-    // 실제로는 로그인된 유저의 ID를 가져와야 함
-    const fetchUserData = async () => {
-      try {
-        const res = await axios.get(`${API_URL}/1`); // 예: /member/1
-        const data = res.data;
-        setForm({
-          id: data.id || "",
-          name: data.name || "",
-          email: data.email || "",
-          phone: data.phone || "",
-          zipcode: data.address?.zipcode || "",
-          basic_address: data.address?.basic_address || "",
-          detail_address: data.address?.detail_address || "",
-          currentPassword: "",
-          newPassword: "",
-          confirmPassword: "",
-        });
-      } catch (error) {
-        console.error("회원정보 로드 오류:", error);
-      }
-    };
-
-    fetchUserData();
-  }, []);
+    if (userData) {
+      setForm({
+        userId: userData.userId || "",
+        email: userData.email || "",
+        name: userData.name || "",
+        phone: userData.phone || "",
+        zipcode: userData.zipcode || "",
+        basic_address: userData.basic_address || "",
+        detail_address: userData.detail_address || "",
+        currentPassword: "",
+        newPassword: "",
+        confirmPassword: "",
+      });
+    }
+  }, [userData]);
 
   /** ✅ 입력값 변경 */
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    if (name === "email") {
-      const noKorean = value.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, "");
-      setForm((prev) => ({ ...prev, [name]: noKorean }));
-      return;
-    }
 
     if (name === "phone") {
       let numbersOnly = value.replace(/[^0-9]/g, "");
@@ -64,10 +47,7 @@ export default function MypageModify() {
       } else if (numbersOnly.length < 8) {
         numbersOnly = `${numbersOnly.slice(0, 3)}-${numbersOnly.slice(3)}`;
       } else {
-        numbersOnly = `${numbersOnly.slice(0, 3)}-${numbersOnly.slice(
-          3,
-          7
-        )}-${numbersOnly.slice(7, 11)}`;
+        numbersOnly = `${numbersOnly.slice(0, 3)}-${numbersOnly.slice(3, 7)}-${numbersOnly.slice(7, 11)}`;
       }
       setForm((prev) => ({ ...prev, [name]: numbersOnly }));
       return;
@@ -78,11 +58,6 @@ export default function MypageModify() {
 
   /** ✅ 정규식 검증 */
   const validatePassword = (pw) => /^(?=.*[0-9]).{6,}$/.test(pw);
-  const validateEmail = (email) => {
-    if (!email) return true;
-    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-    return emailRegex.test(email);
-  };
   const validatePhone = (phone) => /^01[0-9]-\d{3,4}-\d{4}$/.test(phone);
 
   /** ✅ 주소검색 */
@@ -93,8 +68,7 @@ export default function MypageModify() {
     if (data.addressType === "R") {
       if (data.bname !== "") extraAddress += data.bname;
       if (data.buildingName !== "")
-        extraAddress +=
-          extraAddress !== "" ? `, ${data.buildingName}` : data.buildingName;
+        extraAddress += extraAddress !== "" ? `, ${data.buildingName}` : data.buildingName;
     }
 
     if (extraAddress !== "") fullAddress += ` (${extraAddress})`;
@@ -115,31 +89,35 @@ export default function MypageModify() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (form.newPassword && !validatePassword(form.newPassword))
-      return alert("비밀번호는 숫자를 포함해 6자 이상이어야 합니다.");
-    if (form.newPassword !== form.confirmPassword)
-      return alert("새 비밀번호가 일치하지 않습니다.");
-    if (!validatePhone(form.phone))
-      return alert("휴대폰번호 형식이 올바르지 않습니다.");
-    if (!validateEmail(form.email))
-      return alert("이메일 형식이 올바르지 않습니다.");
+    // 비밀번호 변경하는 경우
+    if (form.newPassword) {
+      if (!form.currentPassword) {
+        return alert("현재 비밀번호를 입력해주세요.");
+      }
 
-    const updatedData = {
-      ...form,
-      password: form.newPassword ? form.newPassword : form.currentPassword,
-      address: {
-        zipcode: form.zipcode,
-        basic_address: form.basic_address,
-        detail_address: form.detail_address,
-      },
-    };
+      // 현재 비밀번호 확인
+      const isValidPassword = await onVerifyPassword(form.currentPassword);
+      if (!isValidPassword) {
+        return alert("현재 비밀번호가 일치하지 않습니다.");
+      }
+
+      if (!validatePassword(form.newPassword)) {
+        return alert("비밀번호는 숫자를 포함해 6자 이상이어야 합니다.");
+      }
+
+      if (form.newPassword !== form.confirmPassword) {
+        return alert("새 비밀번호가 일치하지 않습니다.");
+      }
+    }
+
+    if (!validatePhone(form.phone)) {
+      return alert("휴대폰번호 형식이 올바르지 않습니다.");
+    }
 
     try {
-      await axios.put(`${API_URL}/1`, updatedData); // 실제 유저 ID에 맞게 수정
-      alert("✅ 회원정보가 수정되었습니다!");
+      await onSubmit(form);
     } catch (error) {
-      console.error("정보수정 오류:", error);
-      alert("정보수정 중 오류가 발생했습니다.");
+      // 에러는 부모 컴포넌트에서 처리
     }
   };
 
@@ -149,14 +127,14 @@ export default function MypageModify() {
 
   return (
     <form className="join-form" onSubmit={handleSubmit}>
-      {/* 아이디 */}
+      {/* 이메일 (읽기전용) */}
       <div className="form-group">
-        <label htmlFor="id">아이디</label>
+        <label htmlFor="email">이메일 (ID)</label>
         <input
-          type="text"
-          id="id"
-          name="id"
-          value={form.id}
+          type="email"
+          id="email"
+          name="email"
+          value={form.email}
           disabled
           className="disabled"
         />
@@ -171,7 +149,7 @@ export default function MypageModify() {
           name="currentPassword"
           value={form.currentPassword}
           onChange={handleChange}
-          placeholder="현재 비밀번호 입력"
+          placeholder="비밀번호 변경 시 입력"
         />
       </div>
 
@@ -208,19 +186,7 @@ export default function MypageModify() {
           name="name"
           value={form.name}
           onChange={handleChange}
-        />
-      </div>
-
-      {/* 이메일 */}
-      <div className="form-group">
-        <label htmlFor="email">E-mail</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={form.email}
-          onChange={handleChange}
-          placeholder="example@domain.com"
+          required
         />
       </div>
 
@@ -234,6 +200,7 @@ export default function MypageModify() {
           value={form.phone}
           onChange={handleChange}
           placeholder="010-1234-5678"
+          required
         />
       </div>
 
@@ -261,7 +228,7 @@ export default function MypageModify() {
           placeholder="기본주소"
           name="basic_address"
           value={form.basic_address}
-          onChange={handleChange}
+          readOnly
         />
         <input
           type="text"

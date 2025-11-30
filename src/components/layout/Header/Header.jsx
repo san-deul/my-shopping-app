@@ -10,7 +10,7 @@ import NavMenus from "./NavMenus";
 
 
 
-//import logo from "../../../assets/images/logo1.png"
+import logo from "../../../assets/images/logo.png"
 import AllMenus from "./AllMenus";
 import UtilMenus from "./UtilMenus";
 import MobileMenus from "./MobileMenus";
@@ -94,7 +94,7 @@ export default function Header({ className, onMouseEnter, onMouseLeave, onAllMen
       const children = !user
         ? [
           { key: 1, label: "회원가입", to: "/join" },
-          { key: 2, label: "로그인", to: "/login" },
+          { key: 2, label: "로그인", to: "/login", state: { from: location.pathname }, },
         ]
         : [
           { key: 3, label: "마이페이지", to: "/mypage" },
@@ -122,8 +122,8 @@ export default function Header({ className, onMouseEnter, onMouseLeave, onAllMen
 
         <Link to="/" className="logo">
           <h1>
-            {/*<img src={logo} />*/}
-            GLOWLY
+            {<img src={logo} />}
+            
           </h1>
         </Link>
 
@@ -149,7 +149,9 @@ export default function Header({ className, onMouseEnter, onMouseLeave, onAllMen
               toggleSubMenu={toggleSubMenu}
               openSubMenus={openSubMenus}
               closeMobileMenu={toggleMobileMenu} />
-            <MobileUtil />
+            <MobileUtil
+              closeMobileMenu={toggleMobileMenu}
+            />
           </div>
         </div>
 

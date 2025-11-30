@@ -1,0 +1,230 @@
+/* 마이페이지 수정 컨테이너 */
+.mypage-modify-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.mypage-modify-container h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+/* 로딩 & 에러 상태 */
+.loading,
+.error {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 16px;
+  color: #666;
+}
+
+.error {
+  color: #e53e3e;
+}
+
+/* 폼 스타일 */
+.join-form {
+  background: #fff;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* 폼 그룹 */
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.form-group input::placeholder {
+  color: #aaa;
+}
+
+.form-group input:disabled,
+.form-group input.disabled {
+  background-color: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.form-group input:read-only {
+  background-color: #fafafa;
+  cursor: default;
+}
+
+/* 주소 입력 */
+.address-wrap {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.address-wrap input {
+  flex: 1;
+}
+
+.form-group input[name="basic_address"],
+.form-group input[name="detail_address"] {
+  margin-top: 8px;
+}
+
+/* 버튼 스타일 */
+.btn-small {
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-small:hover {
+  background-color: var(--main-hover)
+}
+
+.btn-small:active {
+  transform: scale(0.98);
+}
+
+/* 하단 버튼 그룹 */
+.join-btn-wrap {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.join-btn-wrap button {
+  flex: 1;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel {
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+.btn-cancel:hover {
+  background-color: #e8e8e8;
+}
+
+.btn-submit {
+  background-color: var(--main-color);
+  color: white;
+}
+
+.btn-submit:hover {
+  background-color: var(--main-hover);
+}
+
+.btn-cancel:active,
+.btn-submit:active {
+  transform: scale(0.98);
+}
+
+/* 반응형 */
+
+@media (max-width: 768px) {
+  .join-form{font-size: 1rem;}
+  .mypage-modify-container {
+    margin: 20px auto;
+  }
+
+  .mypage-modify-container h2 {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .join-form {
+    padding: 24px 20px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group input {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+
+  .address-wrap {
+    flex-direction: column;
+  }
+
+  .address-wrap input {
+    width: 100%;
+  }
+
+  .btn-small {
+    width: 100%;
+    padding: 10px 16px;
+  }
+
+  .join-btn-wrap {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 24px;
+    padding-top: 20px;
+  }
+
+  .join-btn-wrap button {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mypage-modify-container {
+    padding: 0 16px;
+  }
+
+  .mypage-modify-container h2 {
+    font-size: 20px;
+  }
+
+  .join-form {
+    padding: 20px 16px;
+  }
+}
