@@ -164,7 +164,14 @@ export default function CartPage() {
   const handleOrder = () => {
     const selected = cartItems.filter((i) => checkedItems.includes(i.id));
     if (selected.length === 0) return alert("선택된 상품이 없습니다.");
-    navigate("/order", { state: { items: selected } });
+    const formatted = selected.map((i) => ({
+      id: i.products.id,
+      name: i.products.name,
+      price: i.products.price,
+      image: i.products.image,
+      quantity: i.quantity
+    }));
+    navigate("/order", { state: { items: formatted } });
   };
 
   if (loading) return <div className="cart-container">로딩 중...</div>;

@@ -16,11 +16,19 @@ export default function OrderPage() {
   const [deliveryInfo, setDeliveryInfo] = useState(null);
 
   // 장바구니 or 단일 상품 데이터 받기
-  useEffect(() => {
-    const data = location.state;
-    if (data?.products) setProducts(data.products); // 여러개
-    else if (data?.product) setProducts([{ ...data.product, quantity: data.quantity || 1 }]);
-  }, [location.state]);
+useEffect(() => {
+  const data = location.state;
+
+  if (data?.products) {
+    setProducts(data.products);
+  } 
+  else if (data?.items) {
+    setProducts(data.items);
+  }
+  else if (data?.product) {
+    setProducts([{ ...data.product, quantity: data.quantity || 1 }]);
+  }
+}, [location.state]);
 
   // 회원정보 가져오기
   useEffect(() => {
