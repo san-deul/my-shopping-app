@@ -134,49 +134,40 @@ export default function JoinForm() {
       return alert("휴대폰번호 형식이 올바르지 않습니다. (예: 010-1234-5678)");
 
     try {
-      // 1️⃣ member 테이블 먼저 insert 시도 (임시 id)
-      const tempId = "temp-" + Date.now();
-      const { data: memberData, error: insertError } = await supabase
-        .from("member")
-        .insert([
-          {
-            id: tempId,
-            email: form.email,
-            name: form.name,
-            phone: form.phone,
-            zipcode: form.zipcode,
-            basic_address: form.basic_address,
-            detail_address: form.detail_address,
-            level: 1, // smallint
-          },
-        ])
-        .select();
-
-      if (insertError) throw new Error(`회원 정보 저장 실패: ${insertError.message}`);
-
-      // 2️⃣ Auth 계정 생성
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email: form.email,
         password: form.password,
       });
 
       if (authError) {
-        // Auth 실패 시 member rollback
-        await supabase.from("member").delete().eq("id", tempId);
         throw new Error(`Auth 생성 실패: ${authError.message}`);
       }
+      const userId = authData.user.id;
 
-      // 3️⃣ member ID를 Auth user ID로 교체
-      await supabase.from("member").update({ id: authData.user.id }).eq("id", tempId);
+      const { error: insertError } = await supabase.from("member").insert([
+        {
+          id: userId,
+          email: form.email,
+          name: form.name,
+          phone: form.phone,
+          zipcode: form.zipcode,
+          basic_address: form.basic_address,
+          detail_address: form.detail_address,
+          level: 1,
+        },
+      ]);
+
+      if (insertError) {
+        throw new Error(`회원 정보 저장 실패: ${insertError.message}`);
+      }
 
       const confirmGoMain = window.confirm(
         `🎉 회원가입을 축하합니다, ${form.name}님!\n\n메인 페이지로 이동하시겠습니까?`
       );
 
       if (confirmGoMain) {
-        navigate("/"); // ✅ 메인으로 이동
+        navigate("/");
       }
-
       setForm({
         email: "",
         password: "",
@@ -188,157 +179,157 @@ export default function JoinForm() {
         detail_address: "",
       });
       setIsEmailChecked(false);
+    
+  } catch (error) {
+    console.error(error);
+    alert(`회원가입 실패: ${error.message}`);
+  }
+};
 
-    } catch (error) {
-      console.error(error);
-      alert(`회원가입 실패: ${error.message}`);
-    }
-  };
+const handleResetForm = () => {
+  const ok = window.confirm("작성 중인 내용을 모두 지우시겠습니까?");
+  if (!ok) return;
 
-  const handleResetForm = () => {
-    const ok = window.confirm("작성 중인 내용을 모두 지우시겠습니까?");
-    if (!ok) return;
+  setForm({
+    email: "",
+    password: "",
+    confirmPassword: "",
+    name: "",
+    phone: "",
+    zipcode: "",
+    basic_address: "",
+    detail_address: "",
+  });
+  setIsEmailChecked(false);
+  setPasswordMatch(true);
+  setTimeout(() => {
+    const emailInput = document.getElementById("email");
+    if (emailInput) emailInput.focus();
+  }, 50);
+};
 
-    setForm({
-      email: "",
-      password: "",
-      confirmPassword: "",
-      name: "",
-      phone: "",
-      zipcode: "",
-      basic_address: "",
-      detail_address: "",
-    });
-    setIsEmailChecked(false);
-    setPasswordMatch(true);
-    setTimeout(() => {
-      const emailInput = document.getElementById("email");
-      if (emailInput) emailInput.focus();
-    }, 50);
-  };
-
-  return (
-    <form className="join-form" onSubmit={handleSubmit}>
-      {/* 이메일(ID) */}
-      <div className="form-group">
-        <span class="pp">* 필수</span>
-        <label htmlFor="email"><span class="point">*</span> 아이디 (사용가능한 이메일을 적어주세요) </label>
-        <div className="id-check-wrap">
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            placeholder="example@domain.com"
-            required
-          />
-          <button type="button" className="btn-small" onClick={handleEmailCheck}>
-            중복체크
-          </button>
-        </div>
-      </div>
-
-      {/* 비밀번호 */}
-      <div className="form-group">
-        <label htmlFor="password"><span class="point">*</span> 비밀번호 </label>
+return (
+  <form className="join-form" onSubmit={handleSubmit}>
+    {/* 이메일(ID) */}
+    <div className="form-group">
+      <span class="pp">* 필수</span>
+      <label htmlFor="email"><span class="point">*</span> 아이디 (사용가능한 이메일을 적어주세요) </label>
+      <div className="id-check-wrap">
         <input
-          type="password"
-          id="password"
-          name="password"
-          value={form.password}
+          type="email"
+          id="email"
+          name="email"
+          value={form.email}
           onChange={handleChange}
+          placeholder="example@domain.com"
           required
         />
-      </div>
-
-      {/* 비밀번호 확인 */}
-      <div className="form-group">
-        <label htmlFor="confirmPassword"><span class="point">*</span> 비밀번호 확인 </label>
-        <input
-          type="password"
-          id="confirmPassword"
-          name="confirmPassword"
-          value={form.confirmPassword}
-          onChange={handleChange}
-          required
-        />
-        {!passwordMatch && form.confirmPassword && (
-          <p className="error-text">비밀번호가 일치하지 않습니다.</p>
-        )}
-      </div>
-
-      {/* 이름 */}
-      <div className="form-group">
-        <label htmlFor="name"><span class="point">*</span> 이름 </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={form.name}
-          onChange={handleChange}
-          required
-        />
-      </div>
-
-      {/* 휴대폰 */}
-      <div className="form-group">
-        <label htmlFor="phone"><span class="point">*</span> 휴대폰번호</label>
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          value={form.phone}
-          onChange={handleChange}
-          placeholder="010-1234-5678"
-          required
-        />
-      </div>
-
-      {/* 주소 */}
-      <div className="form-group">
-        <label htmlFor="address">주소</label>
-        <div className="address-wrap">
-          <input
-            type="text"
-            placeholder="우편번호"
-            name="zipcode"
-            value={form.zipcode}
-            readOnly
-          />
-          <button
-            type="button"
-            className="btn-small"
-            onClick={handleOpenPostcode}
-          >
-            주소검색
-          </button>
-        </div>
-        <input
-          type="text"
-          placeholder="기본주소"
-          name="basic_address"
-          value={form.basic_address}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          placeholder="상세주소"
-          name="detail_address"
-          value={form.detail_address}
-          onChange={handleChange}
-        />
-      </div>
-
-      {/* 버튼 */}
-      <div className="join-btn-wrap">
-        <button type="button" className="btn-cancel" onClick={handleResetForm}>
-          취소
-        </button>
-        <button type="submit" className="btn-submit">
-          회원가입
+        <button type="button" className="btn-small" onClick={handleEmailCheck}>
+          중복체크
         </button>
       </div>
-    </form>
-  );
+    </div>
+
+    {/* 비밀번호 */}
+    <div className="form-group">
+      <label htmlFor="password"><span class="point">*</span> 비밀번호 </label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        value={form.password}
+        onChange={handleChange}
+        required
+      />
+    </div>
+
+    {/* 비밀번호 확인 */}
+    <div className="form-group">
+      <label htmlFor="confirmPassword"><span class="point">*</span> 비밀번호 확인 </label>
+      <input
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+        value={form.confirmPassword}
+        onChange={handleChange}
+        required
+      />
+      {!passwordMatch && form.confirmPassword && (
+        <p className="error-text">비밀번호가 일치하지 않습니다.</p>
+      )}
+    </div>
+
+    {/* 이름 */}
+    <div className="form-group">
+      <label htmlFor="name"><span class="point">*</span> 이름 </label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        value={form.name}
+        onChange={handleChange}
+        required
+      />
+    </div>
+
+    {/* 휴대폰 */}
+    <div className="form-group">
+      <label htmlFor="phone"><span class="point">*</span> 휴대폰번호</label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        value={form.phone}
+        onChange={handleChange}
+        placeholder="010-1234-5678"
+        required
+      />
+    </div>
+
+    {/* 주소 */}
+    <div className="form-group">
+      <label htmlFor="address">주소</label>
+      <div className="address-wrap">
+        <input
+          type="text"
+          placeholder="우편번호"
+          name="zipcode"
+          value={form.zipcode}
+          readOnly
+        />
+        <button
+          type="button"
+          className="btn-small"
+          onClick={handleOpenPostcode}
+        >
+          주소검색
+        </button>
+      </div>
+      <input
+        type="text"
+        placeholder="기본주소"
+        name="basic_address"
+        value={form.basic_address}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        placeholder="상세주소"
+        name="detail_address"
+        value={form.detail_address}
+        onChange={handleChange}
+      />
+    </div>
+
+    {/* 버튼 */}
+    <div className="join-btn-wrap">
+      <button type="button" className="btn-cancel" onClick={handleResetForm}>
+        취소
+      </button>
+      <button type="submit" className="btn-submit">
+        회원가입
+      </button>
+    </div>
+  </form>
+);
 }

@@ -53,13 +53,14 @@ export default function Review({ lists = [] }) {
   return (
     <div className="section">
       <div className="section_in">
-        {lists.length > 0 ? (
-          <>
-            {member?.level === 1 && (
+        {member?.level === 1 && (
               <div className="btn_area" style={{ textAlign: "right", marginTop: "20px" }}>
                 <BoardButton type="write" boardType="review" />
               </div>
             )}
+        {lists.length > 0 ? (
+          <>
+            
             <ul className="board_lists">
               {currentLists.map((item) => (
                 
@@ -102,6 +103,7 @@ export default function Review({ lists = [] }) {
               onPageChange={handlePageChange} />
           </>
         ) : (
+          
           <p>등록된 후기가 없습니다.</p>
         )}
 

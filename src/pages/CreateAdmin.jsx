@@ -20,7 +20,7 @@ export default function CreateAdmin() {
         id: data.user.id,
         name: "관리자",
         email: data.user.email,
-        level: "admin",
+        level: 10,
       });
 
       if (insertError) alert(`❌ member 등록 실패: ${insertError.message}`);
